@@ -38,7 +38,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
 .btn svg{width:18px;height:18px;flex:none}
 
 /* topo */
-.band{background:var(--band);color:var(--band-fg)}
+.band{background:var(--band);color:var(--band-fg)}.topbar{position:relative;isolation:isolate;background:linear-gradient(180deg,var(--band) 0%,var(--band-deep) 160%)}.topbar::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.07;mix-blend-mode:overlay}.topbar::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(232,205,160,.55) 18%,rgba(232,205,160,.55) 82%,transparent) bottom/100% 1px no-repeat,repeating-linear-gradient(135deg,rgba(255,255,255,.028) 0 1px,transparent 1px 6px)}
 header .wrap{display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding-block:1rem;flex-wrap:nowrap}
 .mark{min-width:0}
 .mark span{white-space:nowrap}
@@ -507,7 +507,7 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
   <symbol id="house" viewBox="0 0 32 32"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" d="M4 15 16 5l12 10M8 12v15h16V12M13 27v-8h6v8"/></symbol>
 </svg>
 
-<div class="band">
+<div class="band topbar">
   <header>
     <div class="wrap">
       <div class="mark"><svg role="img" aria-label="Logo Roberto Imóveis"><use href="#ri"/></svg><div><b>ROBERTO</b><span>Corretor de imóveis</span></div></div>
