@@ -497,6 +497,20 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
 .btn-lead-main svg{width:17px;height:17px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn-lead-main{color:#1A0E0D}}
 :root[data-theme="dark"] .btn-lead-main{color:#1A0E0D}
+/* cartão do corretor */
+.broker.hero{container-type:inline-size;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"logo logo" "lopes photo" "h1 photo" "p photo" "act act";column-gap:1.5rem;row-gap:.75rem;align-items:center;align-content:center;padding:1.5rem}
+.broker.hero .hero-text{display:contents}
+.broker.hero .hero-logo{grid-area:logo;justify-self:stretch;justify-content:center;padding-bottom:1rem;margin-bottom:.35rem;border-bottom:1px solid rgba(232,205,160,.4)}
+.broker.hero .lopes{grid-area:lopes;justify-self:start;align-self:end}
+.broker.hero h1{grid-area:h1;margin:0}
+.broker.hero p{grid-area:p;margin:0;align-self:start}
+.broker.hero .portrait{grid-area:photo;align-self:center;justify-self:end;margin:6px 6px 18px;width:clamp(128px,13vw,156px)}
+.broker.hero .portrait::before{transform:none;inset:-6px;border:1px solid rgba(232,205,160,.5);border-radius:17px}
+.broker.hero .portrait .tag{left:50%;right:auto;bottom:-14px;transform:translateX(-50%);white-space:nowrap;text-align:center}
+.broker.hero .actions{grid-area:act;display:grid;grid-template-columns:1fr;gap:.55rem;margin-top:.6rem;padding-top:1rem;border-top:1px solid rgba(232,205,160,.4)}
+.broker.hero .actions .btn{justify-content:center;width:100%;box-sizing:border-box;margin:0}
+@container (min-width:440px){.broker.hero .actions{grid-template-columns:repeat(3,1fr)}.broker.hero .actions .btn{padding-inline:.5rem}}
+@media (max-width:560px){.broker.hero{padding:1.1rem;column-gap:1rem;grid-template-areas:"logo logo" "lopes photo" "h1 photo" "act act";grid-template-rows:auto 1fr 1fr auto}.broker.hero .lopes{align-self:end}.broker.hero h1{align-self:start}.broker.hero .portrait{width:104px}.broker.hero .portrait .tag{font-size:.58rem;padding:.28rem .6rem;bottom:-12px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
