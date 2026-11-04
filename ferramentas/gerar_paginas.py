@@ -58,11 +58,19 @@ def gerar(pagina, c):
         f'<meta property="og:url" content="{url}">'
         '<meta name="twitter:card" content="summary_large_image">'
         # abre o imóvel assim que a página carrega
-        f"<script>try{{if(!location.hash)history.replaceState(null,'',location.pathname+location.search+'#{c['id']}')}}catch(e){{}}</script>"
+        f"<script>try{{var h=location.hash.slice(1);if(!h)history.replaceState(null,'',location.pathname+location.search+'#{c['id']}');"
+        f"else if(h!=='{c['id']}')location.replace(new URL('../#'+h,location.href).href)}}catch(e){{}}</script>"
     )
     saida = pagina.replace("<html>", '<html lang="pt-BR">', 1)
     saida = re.sub(r"(<meta name=viewport[^>]*>)", lambda m: m.group(1) + cabeca, saida, count=1)
     saida = _sem_titulo_do_corpo(saida)
+    # outro imóvel aberto daqui vai para a página principal, para o link não misturar os dois
+    rodape = (
+        "<script>window.addEventListener('hashchange',function(){var id=location.hash.slice(1);"
+        f"if(id&&id!=='{c['id']}')location.replace(new URL('../#'+id,location.href).href)}})</script>"
+    )
+    corte = saida.rindex("</body>") if "</body>" in saida else len(saida)
+    saida = saida[:corte] + rodape + saida[corte:]
     destino = RAIZ / c["id"] / "index.html"
     destino.parent.mkdir(exist_ok=True)
     destino.write_text(saida, encoding="utf-8")
