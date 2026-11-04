@@ -513,6 +513,21 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
 /* contador de imóveis oculto na tela (continua para leitores de tela) */
 #f-count{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 .f-bar .f-right{margin-left:auto}
+/* cartão do corretor, compacto */
+.broker.hero{padding:1.05rem 1.3rem 1.15rem;row-gap:.5rem;column-gap:1.3rem}
+.broker.hero .hero-logo{padding-bottom:.7rem;margin-bottom:.2rem;gap:.6rem}
+.broker.hero .hero-logo svg{width:44px;height:44px}
+.broker.hero .hero-logo b{font-size:1.5rem}
+.broker.hero .hero-logo div{gap:.3rem}
+.broker.hero .lopes img{height:30px}
+.broker.hero h1{line-height:1.2}
+.broker.hero .portrait{width:clamp(112px,10.5vw,130px);margin:6px 6px 14px}
+.broker.hero .portrait .tag{bottom:-12px;font-size:.6rem;padding:.28rem .65rem}
+.broker.hero .actions{margin-top:.25rem;padding-top:.75rem;gap:.5rem}
+.broker.hero .actions .btn{padding-block:.55rem}
+.broker.hero .actions .btn{white-space:nowrap}
+@container (min-width:440px) and (max-width:520px){.broker.hero .actions .btn{font-size:.66rem;padding-inline:.35rem;gap:.3rem}.broker.hero .actions .btn svg{width:13px;height:13px}}
+@media (max-width:560px){.broker.hero{padding:.9rem 1rem 1rem;row-gap:.45rem}.broker.hero .hero-logo{padding-bottom:.6rem}.broker.hero .hero-logo svg{width:38px;height:38px}.broker.hero .hero-logo b{font-size:1.25rem}.broker.hero .portrait{width:96px}.broker.hero .actions{gap:.4rem;padding-top:.65rem}.broker.hero .actions .btn{padding-block:.5rem}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
