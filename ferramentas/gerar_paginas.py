@@ -7,6 +7,9 @@ Rode de novo sempre que o index.html mudar:
 
     python3 ferramentas/gerar_paginas.py            # todos os imóveis
     python3 ferramentas/gerar_paginas.py gaia-cabral  # só alguns
+
+Rodando sem argumentos, também apaga a página de imóvel que saiu do site
+e reescreve o sitemap.xml (lista de páginas para o Google).
 """
 import html
 import pathlib
@@ -34,7 +37,7 @@ def cartoes(pagina):
             "nome": achar(r"<h3>(.*?)</h3>", bloco),
             "local": achar(r'<span class="tag">(.*?)</span>', bloco).replace(" · ", ", "),
             "sub": achar(r'<p class="sub">(.*?)</p>', bloco),
-            "preco": achar(r'<div class="price-row[^"]*">(.*?)</div>', bloco),
+            "preco": achar(r'<div class="price-row[^"]*"[^>]*>(.*?)</div>', bloco),
             "foto": re.search(r'class="g-main" src="([^"]+)"', bloco).group(1),
         }
 
@@ -82,14 +85,47 @@ def _sem_titulo_do_corpo(s):
     return s[:corte] + re.sub(r"\n?<title>[^<]*</title>", "", s[corte:], count=1)
 
 
+def gerada_por_aqui(pasta):
+    arq = pasta / "index.html"
+    if not arq.is_file():
+        return False
+    inicio = arq.read_text(encoding="utf-8")[:4000]
+    return '<base href="../">' in inicio and f'<link rel="canonical" href="{SITE}/{pasta.name}/">' in inicio
+
+
+def limpar(ids):
+    for pasta in sorted(RAIZ.iterdir()):
+        if pasta.is_dir() and pasta.name not in ids and gerada_por_aqui(pasta):
+            for f in pasta.iterdir():
+                f.unlink()
+            pasta.rmdir()
+            print("removido:", pasta.name)
+
+
+def sitemap(ids):
+    urls = [f"{SITE}/"] + [f"{SITE}/{i}/" for i in ids]
+    corpo = "".join(f"<url><loc>{u}</loc></url>" for u in urls)
+    (RAIZ / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{corpo}</urlset>\n',
+        encoding="utf-8",
+    )
+    print("gerado: sitemap.xml")
+
+
 def main():
     pagina = (RAIZ / "index.html").read_text(encoding="utf-8")
     pedidos = set(sys.argv[1:])
-    feitos = [gerar(pagina, c) for c in cartoes(pagina) if not pedidos or c["id"] in pedidos]
+    todos = list(cartoes(pagina))
+    feitos = [gerar(pagina, c) for c in todos if not pedidos or c["id"] in pedidos]
     for f in feitos:
         print("gerado:", f.relative_to(RAIZ))
     if not feitos:
         sys.exit("nenhum imóvel encontrado com esse id")
+    if not pedidos:
+        ids = [c["id"] for c in todos]
+        limpar(set(ids))
+        sitemap(ids)
 
 
 if __name__ == "__main__":

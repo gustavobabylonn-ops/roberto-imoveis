@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://robertoimoveiscwb.com.br/sitemap.xml
