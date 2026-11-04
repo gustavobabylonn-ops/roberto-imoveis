@@ -555,10 +555,9 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
           <svg class="f-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
           <div class="f-field">
             <label for="f-busca">Buscar por bairro ou cidade</label>
-            <input id="f-busca" type="search" list="f-locais" autocomplete="off" enterkeyhint="search" placeholder="Digite aqui, ex.: Cabral, Rebouças, Itapema">
+            <input id="f-busca" type="search" autocomplete="off" enterkeyhint="search" placeholder="Digite o bairro ou a cidade">
           </div>
           <button type="button" class="f-x" id="f-x" aria-label="Limpar busca" hidden>&times;</button>
-          <datalist id="f-locais"></datalist>
         </div>
         <div class="f-bar">
           <span class="f-count" id="f-count" aria-live="polite">6 imóveis</span>
@@ -1199,8 +1198,6 @@ var filters=(function(){
   var sel={order:byId('f-ordem'),rooms:byId('f-quartos'),price:byId('f-preco'),status:byId('f-status')};
   var search=byId('f-busca'),clearSearch=byId('f-x'),count=byId('f-count'),badge=byId('f-badge'),empty=byId('f-empty'),emptyMsg=byId('f-empty-msg');
   var STOP={de:1,da:1,do:1,das:1,dos:1,em:1,e:1,no:1,na:1};
-  var suggestions=byId('f-locais'),seen={};
-  listings.forEach(function(L){[L.neighborhood,L.city,L.name].forEach(function(v){if(v&&!seen[v]){seen[v]=1;var o=make('option');o.value=v;suggestions.appendChild(o)}})});
   function terms(){return normalize(search.value).split(/[^a-z0-9]+/).filter(function(w){return w.length>=2&&!STOP[w]})}
   function matches(L,ws){return ws.every(function(w){return L.searchText.some(function(s){return s.indexOf(w)===0})})}
   function apply(){
