@@ -1477,6 +1477,7 @@ if(startL)detail.open(startL,true);
       <form novalidate>
         <label>Nome<input name="firstname" autocomplete="name" required></label>
         <label>WhatsApp<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 99999-9999" required></label>
+        <label>E-mail (opcional)<input name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com"></label>
         <div class="lf-row">
           <label>Imóvel de interesse<select name="imovel"><option>Procuro outro imóvel</option></select></label>
           <label>Melhor horário<select name="horario"><option>Qualquer horário</option><option>Manhã</option><option>Tarde</option><option>Noite</option></select></label>
@@ -1496,7 +1497,7 @@ if(startL)detail.open(startL,true);
 </dialog>
 <script>
 /* Formulário próprio ligado ao HubSpot. Enquanto os dois códigos estiverem vazios, os botões continuam abrindo o Google Forms. */
-var HUBSPOT_PORTAL='', HUBSPOT_FORM='';
+var HUBSPOT_PORTAL='52270219', HUBSPOT_FORM='758d45a9-38f2-481b-acf7-3baed47bcb90';
 (function(){
   var d=document.getElementById('lead-form'); if(!d||!HUBSPOT_PORTAL||!HUBSPOT_FORM||!d.showModal)return;
   var f=d.querySelector('form'),err=d.querySelector('[data-lf-err]'),btn=f.querySelector('.lf-send');
@@ -1514,10 +1515,13 @@ var HUBSPOT_PORTAL='', HUBSPOT_FORM='';
     if(nome.length<2){err.textContent='Digite seu nome.';err.hidden=false;return}
     if(tel.length<10){err.textContent='Digite seu WhatsApp com DDD.';err.hidden=false;return}
     var im=f.elements.imovel.value,hr=f.elements.horario.value,msg=f.elements.mensagem.value.trim();
+    var em=f.elements.email.value.trim();
+    if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){err.textContent='Confira o e-mail, ou deixe em branco.';err.hidden=false;return}
+    if(!em)em=(tel.length<=11?'55'+tel:tel)+'@lead.robertoimoveiscwb.com.br';
     var texto='Imóvel: '+im+' | Melhor horário: '+hr+(msg?' | Mensagem: '+msg:'');
     btn.disabled=true;
     fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HUBSPOT_PORTAL+'/'+HUBSPOT_FORM,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({fields:[{name:'firstname',value:nome},{name:'phone',value:f.elements.phone.value.trim()},{name:'message',value:texto}],
+      body:JSON.stringify({fields:[{name:'firstname',value:nome},{name:'phone',value:f.elements.phone.value.trim()},{name:'email',value:em},{name:'message',value:texto}],
         context:{pageUri:location.href,pageName:document.title}})})
     .then(function(r){if(!r.ok)throw r;step('ok');f.reset();try{window.fbq&&fbq('track','Lead',{content_name:im})}catch(e){}})
     .catch(function(){btn.disabled=false;err.textContent='Não deu para enviar agora. Tente de novo ou fale direto no WhatsApp: (41) 98416-3630.';err.hidden=false});
