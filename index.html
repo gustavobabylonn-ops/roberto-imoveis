@@ -566,9 +566,22 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
 /* frase acima do botão do topo */
 .cta-wrap{display:flex;flex-direction:column;align-items:center;gap:.28rem}
 .head-actions{align-items:flex-end}
-.cta-call{font-family:var(--small);font-size:.58rem;font-weight:600;color:var(--band-muted);white-space:nowrap;line-height:1;text-transform:uppercase;letter-spacing:.14em}
-@media (max-width:440px){.cta-call{font-size:.56rem}.head-actions .cta-pill{padding:.38rem .65rem}}
-@media (max-width:360px){.cta-call{font-size:.5rem}}
+@media (max-width:440px){.head-actions .cta-pill{padding:.38rem .65rem}}
+/* chamada acima do botão Solicitar contato */
+.head-actions>.sell-pill:not(.cta-pill){display:none}
+.cta-wrap{align-items:flex-end;gap:.45rem}
+.cta-call{display:flex;flex-direction:column;align-items:flex-end;text-align:right;gap:.15rem;line-height:1.15;color:var(--band-fg)}
+.cta-call b{font-family:var(--display);font-style:italic;font-weight:600;font-size:1.05rem;letter-spacing:.01em}
+.cta-call small{font-family:var(--small);font-size:.64rem;font-weight:400;color:var(--band-muted)}
+@media (max-width:720px){
+  header .wrap{flex-wrap:wrap;row-gap:.7rem}
+  .head-actions{flex:1 1 100%;order:3}
+  .cta-wrap{flex:1;flex-direction:row;align-items:center;justify-content:space-between;gap:.8rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.18)}
+  .cta-call{align-items:flex-start;text-align:left}
+  .cta-call b{font-size:.98rem}
+  .cta-call small{font-size:.6rem}
+}
+@media (max-width:400px){.cta-call b{font-size:.88rem}.cta-call small{font-size:.55rem}.head-actions .cta-pill{font-size:.56rem;padding:.42rem .6rem}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -588,8 +601,8 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
       </nav>
       <div class="head-actions">
         <a class="sell-pill" href="#vender" aria-label="Vender meu imóvel"><svg><use href="#house"/></svg><span>Vender meu imóvel</span></a>
-        <div class="cta-wrap"><span class="cta-call">Atendimento personalizado</span>
-          <a class="sell-pill cta-pill" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Deixe seu contato</a>
+        <div class="cta-wrap"><span class="cta-call"><b>Prefere que a gente entre em contato?</b><small>Deixe seus dados e entraremos em contato assim que possível.</small></span>
+          <a class="sell-pill cta-pill" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Solicitar contato</a>
         </div>
       </div>
     </div>
