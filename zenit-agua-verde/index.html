@@ -562,12 +562,12 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
 /* tom off-white puxado para o bege */
 @media not (prefers-color-scheme: dark){:root:not([data-theme="dark"]){--bg:#EEE6D8;--surface:#F8F2E7;--line:#E2D6C3}}
 :root[data-theme="light"]{--bg:#EEE6D8;--surface:#F8F2E7;--line:#E2D6C3}
-/* texto do botão do topo */
-.cta-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;text-align:left}
-.cta-txt small{font-size:.58rem;font-weight:600;text-transform:none;letter-spacing:0;opacity:.75;font-family:var(--small)}
-.cta-pill{padding-block:.38rem;border-radius:14px}
-@media (max-width:440px){.cta-txt small{font-size:.52rem}}
-@media (max-width:360px){.cta-txt small{display:none}}
+/* frase acima do botão do topo */
+.cta-wrap{display:flex;flex-direction:column;align-items:center;gap:.28rem}
+.head-actions{align-items:flex-end}
+.cta-call{font-family:var(--small);font-size:.62rem;font-weight:500;color:var(--band-muted);white-space:nowrap;line-height:1}
+@media (max-width:440px){.cta-call{font-size:.56rem}.head-actions .cta-pill{padding:.38rem .65rem}}
+@media (max-width:360px){.cta-call{font-size:.5rem}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -587,7 +587,9 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
       </nav>
       <div class="head-actions">
         <a class="sell-pill" href="#vender" aria-label="Vender meu imóvel"><svg><use href="#house"/></svg><span>Vender meu imóvel</span></a>
-        <a class="sell-pill cta-pill" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg><span class="cta-txt"><small>Prefere que a gente te chame?</small>Deixe seu contato</span></a>
+        <div class="cta-wrap"><span class="cta-call">Prefere que a gente te chame?</span>
+          <a class="sell-pill cta-pill" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Deixe seu contato</a>
+        </div>
       </div>
     </div>
   </header>
