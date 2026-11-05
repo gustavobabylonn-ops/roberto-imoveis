@@ -203,7 +203,7 @@ section.block{padding-block:4.5rem}
 .hero .actions .btn-wa svg{color:#25D366;opacity:.85;filter:saturate(.75)}
 .hero .actions .btn-sell svg{opacity:.85}
 .hero .actions .btn:hover{border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.06)}
-.lopes{background:rgba(251,248,242,.85)!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.lopes{background:rgba(248,242,231,.88)!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .hero .actions .btn{background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06));border:1px solid rgba(255,255,255,.55);box-shadow:0 6px 16px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.25);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:.9rem 1.4rem;transition:transform .15s ease,background .15s ease,box-shadow .15s ease}
 .hero .actions .btn:hover{background:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,.1));border-color:rgba(255,255,255,.8);box-shadow:0 8px 22px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.3);transform:translateY(-2px)}
 .hero .actions .btn:active{transform:translateY(0);box-shadow:0 3px 8px rgba(0,0,0,.2)}
@@ -374,9 +374,9 @@ footer .wrap{padding-block:1.4rem;display:flex;justify-content:space-between;gap
 .ls-dots button{background:rgba(255,252,246,.4);opacity:1}
 .ls-dots button[aria-current="true"]{background:rgba(255,252,246,.25)}
 .ls-dots button[aria-current="true"]::after{background:#E3726B}
-.list-intro .f-bar{background:rgba(251,248,242,.9);border:1px solid rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.5);border-radius:12px;padding:.5rem .6rem .5rem .9rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.list-intro .f-bar{background:rgba(248,242,231,.92);border:1px solid rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.5);border-radius:12px;padding:.5rem .6rem .5rem .9rem;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .list-intro .f-count{color:var(--fg);font-weight:500}
-.list-intro .f-panel{background:rgba(251,248,242,.95)}
+.list-intro .f-panel{background:rgba(248,242,231,.95)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .list-intro .f-bar,:root:not([data-theme="light"]) .list-intro .f-panel{background:rgba(29,26,26,.88);border-color:rgba(255,255,255,.12)}}
 :root[data-theme="dark"] .list-intro .f-bar,:root[data-theme="dark"] .list-intro .f-panel{background:rgba(29,26,26,.88);border-color:rgba(255,255,255,.12)}
 @media (max-width:480px){.list-intro{padding:1rem .8rem .8rem}.list-head{padding:.9rem .95rem}.list-head h2{font-size:1.45rem}.list-head>p{font-size:.88rem}}
@@ -551,6 +551,17 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
 .lf-ok b{font-family:var(--display);font-size:1.5rem}
 .lf-ok a{color:var(--wa);font-weight:700}
 .lf-err{color:var(--accent)}
+/* topo: botão Quero ser contatado */
+.head-actions{display:flex;align-items:center;gap:.5rem;flex:none}
+.cta-pill{background:var(--band-fg);color:var(--band-deep);border-color:var(--band-fg);box-shadow:0 6px 16px rgba(0,0,0,.22)}
+.cta-pill:hover{background:#fff;color:var(--band-deep);border-color:#fff}
+.cta-pill svg{opacity:1}
+@media (max-width:560px){.head-actions .sell-pill:not(.cta-pill){padding:.42rem;width:30px;height:30px;justify-content:center;box-sizing:border-box}.head-actions .sell-pill:not(.cta-pill) span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}}
+@media (max-width:440px){.head-actions .sell-pill:not(.cta-pill){display:none}.cta-pill{font-size:.58rem;padding:.45rem .7rem}}
+@media (max-width:360px){.cta-pill{font-size:.54rem;padding:.4rem .55rem}}
+/* tom off-white puxado para o bege */
+@media not (prefers-color-scheme: dark){:root:not([data-theme="dark"]){--bg:#EEE6D8;--surface:#F8F2E7;--line:#E2D6C3}}
+:root[data-theme="light"]{--bg:#EEE6D8;--surface:#F8F2E7;--line:#E2D6C3}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -568,7 +579,10 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
       <nav aria-label="Seções">
         <a href="#imoveis">Imóveis</a><a href="#vender">Vender</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
       </nav>
-      <a class="sell-pill" href="#vender"><svg><use href="#house"/></svg>Vender meu imóvel</a>
+      <div class="head-actions">
+        <a class="sell-pill" href="#vender" aria-label="Vender meu imóvel"><svg><use href="#house"/></svg><span>Vender meu imóvel</span></a>
+        <a class="sell-pill cta-pill" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Quero ser contatado</a>
+      </div>
     </div>
   </header>
 </div>
