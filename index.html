@@ -552,7 +552,7 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
 .lf-ok b{font-family:var(--display);font-size:1.5rem}
 .lf-ok a{color:var(--wa);font-weight:700}
 .lf-err{color:var(--accent)}
-/* topo: botão Quero ser contatado */
+/* topo: botão Deixe seu contato */
 .head-actions{display:flex;align-items:center;gap:.5rem;flex:none}
 .cta-pill{background:var(--band-fg);color:var(--band-deep);border-color:var(--band-fg);box-shadow:0 6px 16px rgba(0,0,0,.22)}
 .cta-pill:hover{background:#fff;color:var(--band-deep);border-color:#fff}
@@ -563,6 +563,12 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
 /* tom off-white puxado para o bege */
 @media not (prefers-color-scheme: dark){:root:not([data-theme="dark"]){--bg:#EEE6D8;--surface:#F8F2E7;--line:#E2D6C3}}
 :root[data-theme="light"]{--bg:#EEE6D8;--surface:#F8F2E7;--line:#E2D6C3}
+/* texto do botão do topo */
+.cta-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;text-align:left}
+.cta-txt small{font-size:.58rem;font-weight:600;text-transform:none;letter-spacing:0;opacity:.75;font-family:var(--small)}
+.cta-pill{padding-block:.38rem;border-radius:14px}
+@media (max-width:440px){.cta-txt small{font-size:.52rem}}
+@media (max-width:360px){.cta-txt small{display:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -582,7 +588,7 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
       </nav>
       <div class="head-actions">
         <a class="sell-pill" href="#vender" aria-label="Vender meu imóvel"><svg><use href="#house"/></svg><span>Vender meu imóvel</span></a>
-        <a class="sell-pill cta-pill" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Quero ser contatado</a>
+        <a class="sell-pill cta-pill" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg><span class="cta-txt"><small>Prefere que a gente te chame?</small>Deixe seu contato</span></a>
       </div>
     </div>
   </header>
@@ -1079,7 +1085,7 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
           <h2>Me conte o que você precisa que eu procuro para você</h2>
           <p>São só 3 perguntas: o imóvel que te interessa, seu nome e seu WhatsApp. Eu te chamo para entender o que você procura.</p>
         </div>
-        <a class="btn btn-lead-main" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Quero ser contatado</a>
+        <a class="btn btn-lead-main" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Deixe seu contato</a>
       </div>
     </div>
   </section>
@@ -1486,8 +1492,8 @@ if(startL)detail.open(startL,true);
   <div class="lf-card">
     <button type="button" class="lf-x" data-lf-close aria-label="Fechar">&times;</button>
     <div data-lf-step="form">
-      <h2 id="lf-t">Quero ser contatado</h2>
-      <p class="lf-sub">Deixe seu contato e o Roberto te chama no WhatsApp.</p>
+      <h2 id="lf-t">Deixe seu contato</h2>
+      <p class="lf-sub">Preencha seu nome e WhatsApp. O Roberto entra em contato com você assim que possível, sem compromisso.</p>
       <form novalidate>
         <label>Nome<input name="firstname" autocomplete="name" required></label>
         <label>WhatsApp<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 99999-9999" required></label>
@@ -1504,7 +1510,7 @@ if(startL)detail.open(startL,true);
     </div>
     <div class="lf-ok" data-lf-step="ok" hidden>
       <b>Recebido!</b>
-      <p class="lf-msg">O Roberto vai te chamar no WhatsApp em breve.</p>
+      <p class="lf-msg">Recebemos seu contato. O Roberto vai falar com você assim que possível.</p>
       <a href="https://wa.me/5541984163630" target="_blank" rel="noopener noreferrer">Prefere falar agora? Abrir o WhatsApp</a>
     </div>
   </div>
