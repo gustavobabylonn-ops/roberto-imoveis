@@ -581,6 +581,21 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
   .cta-call small{font-size:.6rem}
 }
 @media (max-width:400px){.cta-call b{font-size:.88rem}.cta-call small{font-size:.55rem}.head-actions .cta-pill{font-size:.56rem;padding:.42rem .6rem}}
+/* botões dos anúncios padronizados */
+.info .f-actions{justify-self:stretch;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem}
+.f-actions .btn.btn-wa,.f-actions .btn.btn-map,.f-actions .btn.btn-lead{justify-content:center;box-sizing:border-box;width:100%;margin:0;white-space:nowrap;
+  background:var(--surface);color:var(--fg);border:1px solid #CDBEA7;box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 2px 6px rgba(60,40,20,.08);
+  font-family:"Montserrat",var(--body);font-weight:700;font-size:.74rem;letter-spacing:.04em;padding:.78rem .6rem;cursor:pointer;
+  transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease}
+.f-actions .btn.btn-wa svg,.f-actions .btn.btn-map svg,.f-actions .btn.btn-lead svg{opacity:1;filter:none;width:16px;height:16px;flex:none}
+.f-actions .btn.btn-wa::after,.f-actions .btn.btn-map::after,.f-actions .btn.btn-lead::after{height:3px;opacity:1;filter:none}
+.f-actions .btn.btn-wa:hover,.f-actions .btn.btn-map:hover,.f-actions .btn.btn-lead:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(60,40,20,.14);border-color:#A9967C}
+.f-actions .btn.btn-wa:focus-visible,.f-actions .btn.btn-map:focus-visible,.f-actions .btn.btn-lead:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .f-actions .btn.btn-wa,:root:not([data-theme="light"]) .f-actions .btn.btn-map,:root:not([data-theme="light"]) .f-actions .btn.btn-lead{color:var(--fg);border-color:#4A403C;box-shadow:none}}
+:root[data-theme="dark"] .f-actions .btn.btn-wa,:root[data-theme="dark"] .f-actions .btn.btn-map,:root[data-theme="dark"] .f-actions .btn.btn-lead{color:var(--fg);border-color:#4A403C;box-shadow:none}
+@media (min-width:481px){.f-actions .btn.btn-wa,.f-actions .btn.btn-map,.f-actions .btn.btn-lead{font-size:.68rem;padding:.75rem .45rem;gap:.35rem;letter-spacing:.02em}}
+@media (max-width:480px){.info .f-actions{gap:.4rem}.f-actions .btn.btn-wa,.f-actions .btn.btn-map,.f-actions .btn.btn-lead{font-size:.62rem;padding:.75rem .3rem;gap:.3rem;letter-spacing:.01em}.f-actions .btn.btn-wa svg,.f-actions .btn.btn-map svg,.f-actions .btn.btn-lead svg{width:14px;height:14px}}
+@media (max-width:360px){.info .f-actions{grid-template-columns:1fr}.f-actions .btn.btn-wa,.f-actions .btn.btn-map,.f-actions .btn.btn-lead{font-size:.7rem}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
