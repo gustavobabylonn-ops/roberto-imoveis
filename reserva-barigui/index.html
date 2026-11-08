@@ -1105,7 +1105,7 @@ h2{font-weight:600}
           <div class="f-actions"><a class="btn btn-wa" href="https://wa.me/5541984163630?text=Ol%C3%A1%2C%20Roberto%21%20Vi%20no%20seu%20site%20o%20sobrado%20de%204%20quartos%20no%20Campo%20Comprido%2C%20de%20R%24%20560%20mil%2C%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener noreferrer"><svg><use href="#wa"/></svg>Saiba mais</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=Rua%20Salvador%20Gon%C3%A7alo%20de%20Christo%2C%20222%2C%20Curitiba%20-%20PR" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>Ver no mapa</a><a class="btn btn-lead" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Sobrado+Campo+Comprido" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Pedir contato</a></div>
         </div>
       </article>
-      <article class="feature" data-id="barra-residence" data-area="125 a 252 m²" data-vagas="2 a 4" data-busca="barra meia praia litoral praia" data-price="2395115" data-cidade="Itapema" data-uf="SC" data-bairro="Meia Praia" data-qmin="3" data-qmax="4" data-status="planta">
+      <article class="feature" data-id="barra-residence" data-capa="img/barra-capa.jpg" data-capa-alt="Fachada completa do Barra Residence, do térreo à cobertura" data-area="125 a 252 m²" data-vagas="2 a 4" data-busca="barra meia praia litoral praia" data-price="2395115" data-cidade="Itapema" data-uf="SC" data-bairro="Meia Praia" data-qmin="3" data-qmax="4" data-status="planta">
         <header class="f-head">
           <span class="tag">Meia Praia · Itapema/SC</span>
           <div class="f-title"><h3>Barra Residence</h3><span class="status">Entrega em julho de 2028</span></div>
@@ -1113,9 +1113,9 @@ h2{font-weight:600}
           <div class="price-row from"><span>A partir de</span><b>R$ 2.395.115</b></div>
         </header>
         <div class="gallery">
-          <div class="main"><img class="g-main" src="img/barra-fachada.jpg" alt="Fachada do Barra Residence, em Meia Praia" width="535" height="532"><span class="badge">Na planta</span></div>
+          <div class="main"><img class="g-main" src="img/barra-capa.jpg" alt="Fachada completa do Barra Residence, do térreo à cobertura, na Rua 321 em Meia Praia" width="1100" height="825"><span class="badge">Na planta</span></div>
           <div class="thumbs" role="group" aria-label="Fotos do Barra Residence">
-            <button type="button" aria-pressed="true" data-src="img/barra-fachada.jpg" data-alt="Fachada do Barra Residence, em Meia Praia"><img src="img/barra-fachada.jpg" alt="Fachada" loading="lazy"></button>
+            <button type="button" aria-pressed="true" data-src="img/barra-fachada-completa.jpg" data-alt="Fachada completa do Barra Residence, do térreo à cobertura, na Rua 321 em Meia Praia" data-fit="contain"><img src="img/barra-fachada-completa.jpg" alt="Fachada completa" loading="lazy"></button>
             <button type="button" aria-pressed="false" data-src="img/barra-fachada-dia.jpg" data-alt="Fachada do Barra Residence durante o dia"><img src="img/barra-fachada-dia.jpg" alt="Fachada de dia" loading="lazy"></button>
             <button type="button" aria-pressed="false" data-src="img/barra-fachada-rua.jpg" data-alt="Fachada do Barra Residence vista da rua, com o letreiro na entrada"><img src="img/barra-fachada-rua.jpg" alt="Fachada vista da rua" loading="lazy"></button>
             <button type="button" aria-pressed="false" data-src="img/barra-entrada.jpg" data-alt="Entrada do prédio com o letreiro do Barra"><img src="img/barra-entrada.jpg" alt="Entrada" loading="lazy"></button>
@@ -1344,7 +1344,7 @@ var grid=document.querySelector('#imoveis .wrap');
 var listings=[].slice.call(grid.querySelectorAll(':scope > .feature')).map(function(el,i){
   var d=el.dataset;
   var photos=[].slice.call(el.querySelectorAll('.thumbs button')).map(function(b){var t=b.querySelector('img');return{src:b.dataset.src,alt:b.dataset.alt||'',label:(t&&t.alt)||b.dataset.alt||'',fit:b.dataset.fit||'cover'}});
-  var cover=photos.filter(function(p){return p.fit!=='contain'})[0]||photos[0]||{src:'',alt:''};
+  var cover=d.capa?{src:d.capa,alt:d.capaAlt||'',label:'',fit:'cover'}:(photos.filter(function(p){return p.fit!=='contain'})[0]||photos[0]||{src:'',alt:''});
   var city=d.cidade||'Curitiba';
   return{
     el:el,order:i,id:d.id,
