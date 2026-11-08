@@ -621,6 +621,10 @@ header .wrap .theme-tg{margin-left:auto}
 h1,h2,h3{letter-spacing:-.005em}
 .services h3{font-size:1.45rem;font-weight:600}
 h2{font-weight:600}
+/* vidro do carrossel: tamanho fixo (evita "fantasmas" de borda no iPhone quando o texto muda) */
+#imoveis .list-head{width:min(100%,22rem);transform:translateZ(0);-webkit-transform:translateZ(0)}
+.ls-cap{display:flex;width:100%;box-sizing:border-box;justify-content:space-between;min-height:5rem;transform:translateZ(0);-webkit-transform:translateZ(0);will-change:opacity}
+.ls-cap .t{flex:1}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
