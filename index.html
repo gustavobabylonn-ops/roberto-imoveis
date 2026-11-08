@@ -1680,14 +1680,27 @@ var HUBSPOT_PORTAL='52270219', HUBSPOT_FORM='758d45a9-38f2-481b-acf7-3baed47bcb9
     var im=f.elements.imovel.value,hr=f.elements.horario.value,msg=f.elements.mensagem.value.trim();
     var em=f.elements.email.value.trim();
     if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){err.textContent='Confira o e-mail, ou deixe em branco.';err.hidden=false;return}
-    if(!em)em=(tel.length<=11?'55'+tel:tel)+'@lead.robertoimoveiscwb.com.br';
     var texto='Imóvel: '+im+' | Melhor horário: '+hr+(msg?' | Mensagem: '+msg:'');
+    var foneTxt=f.elements.phone.value.trim();
+    /* Tentativas em ordem: o HubSpot recusa o envio inteiro se não gostar de um campo (e-mail inventado, campo que não existe no formulário).
+       Por isso tenta de jeitos mais simples antes de desistir, e no fim oferece mandar os dados pelo WhatsApp, para o contato nunca se perder. */
+    var base=[{name:'firstname',value:nome},{name:'phone',value:foneTxt}],tentativas=[];
+    if(em)tentativas.push(base.concat([{name:'email',value:em},{name:'message',value:texto}]));
+    tentativas.push(base.concat([{name:'message',value:texto}]));
+    tentativas.push(base.concat([{name:'email',value:(tel.length<=11?'55'+tel:tel)+'@lead.robertoimoveiscwb.com.br'},{name:'message',value:texto}]));
+    tentativas.push(base);
     btn.disabled=true;
-    fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HUBSPOT_PORTAL+'/'+HUBSPOT_FORM,{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({fields:[{name:'firstname',value:nome},{name:'phone',value:f.elements.phone.value.trim()},{name:'email',value:em},{name:'message',value:texto}],
-        context:{pageUri:location.href,pageName:document.title}})})
-    .then(function(r){if(!r.ok)throw r;step('ok');f.reset();try{window.fbq&&fbq('track','Lead',{content_name:im})}catch(e){}})
-    .catch(function(){btn.disabled=false;err.textContent='Não deu para enviar agora. Tente de novo ou fale direto no WhatsApp: (41) 98416-3630.';err.hidden=false});
+    function enviar(i){
+      return fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HUBSPOT_PORTAL+'/'+HUBSPOT_FORM,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({fields:tentativas[i],context:{pageUri:location.href,pageName:document.title}})})
+      .then(function(r){if(r.ok)return true;return r.text().then(function(t){try{console.warn('HubSpot recusou (tentativa '+(i+1)+'):',r.status,t)}catch(e){}
+        if(i+1<tentativas.length)return enviar(i+1);throw r})},
+        function(e){if(i+1<tentativas.length)return enviar(i+1);throw e})}
+    enviar(0)
+    .then(function(){step('ok');f.reset();try{window.fbq&&fbq('track','Lead',{content_name:im})}catch(e){}})
+    .catch(function(){btn.disabled=false;
+      var wa='https://wa.me/5541984163630?text='+encodeURIComponent('Olá, Roberto! Vi no seu site e gostaria que você entrasse em contato.\nNome: '+nome+'\nWhatsApp: '+foneTxt+(em?'\nE-mail: '+em:'')+'\nImóvel: '+im+'\nMelhor horário: '+hr+(msg?'\nMensagem: '+msg:''));
+      err.textContent='Não deu para enviar pelo formulário agora. ';var a=document.createElement('a');a.href=wa;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Toque aqui para enviar seus dados pelo WhatsApp.';a.style.color='inherit';a.style.fontWeight='700';err.appendChild(a);err.hidden=false});
   });
 })();
 </script>
