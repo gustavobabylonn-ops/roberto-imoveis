@@ -93,6 +93,7 @@ section.block{padding-block:4.5rem}
 
 
 .feature{display:grid;grid-template-columns:1.25fr 1fr;gap:2.4rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1.4rem;align-items:start}
+.vid{display:grid;grid-template-columns:minmax(0,170px) 1fr;gap:1rem;align-items:center;margin:0 0 1.1rem;padding:.75rem;border:1px solid var(--line);border-radius:10px}.vid video{width:100%;height:auto;aspect-ratio:9/16;border-radius:7px;background:#111;display:block}.vid b{display:block;margin-bottom:.3rem}.vid .nw{white-space:nowrap}.vid p{margin:0;font-size:.92rem;line-height:1.45}@media(max-width:420px){.vid{grid-template-columns:minmax(0,130px) 1fr;gap:.75rem}.vid p{font-size:.86rem}}
 .gallery{display:grid;gap:.7rem;min-width:0}
 .gallery .main{position:relative;aspect-ratio:692/500;max-width:100%;border-radius:6px;overflow:hidden;background:var(--line)}
 .gallery .main img{width:100%;height:100%;object-fit:cover;display:block}
@@ -781,18 +782,23 @@ h2{font-weight:600}
             <div><dt>Banheiros</dt><dd>2 a 4</dd></div>
             <div><dt>Vagas</dt><dd>1 a 2</dd></div>
           </dl>
+          <div class="vid">
+            <video src="img/gaia-decorado.mp4" poster="img/gaia-decorado-capa.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Vídeo do apartamento decorado de 91 m² do Gaia Cabral"></video>
+            <div><b>Vídeo do decorado</b><p>O Roberto apresenta o apartamento decorado de 91 m², com 3 quartos, à venda já mobiliado por <strong class="nw">R$ 1.724.700</strong>. A mesma planta sem mobília sai por <span class="nw">R$ 1.211.400</span>.</p></div>
+          </div>
           <div class="units units-m2" role="table" aria-label="Unidades disponíveis">
             <div role="row" class="u-head"><span role="columnheader">Unidade</span><span role="columnheader">Área</span><span role="columnheader">R$/m²</span></div>
             <div role="row"><span role="cell">Apartamento 2 quartos<b class="u-price">R$ 1.000.100</b></span><span role="cell">68 m²</span><span role="cell">14.707</span></div>
             <div role="row"><span role="cell">Apartamento 2 quartos<b class="u-price">R$ 1.027.700</b></span><span role="cell">74 m²</span><span role="cell">13.888</span></div>
             <div role="row"><span role="cell">Apartamento 3 quartos<b class="u-price">R$ 1.211.400</b></span><span role="cell">91 m²</span><span role="cell">13.312</span></div>
+            <div role="row"><span role="cell">Decorado 3 quartos, mobiliado<b class="u-price">R$ 1.724.700</b></span><span role="cell">91 m²</span><span role="cell">18.953</span></div>
             <div role="row"><span role="cell">Cobertura 2 suítes<b class="u-price">R$ 1.819.000</b></span><span role="cell">135 m²</span><span role="cell">13.474</span></div>
           </div>
           <p>Arquitetura contemporânea, natureza e bem-estar na Rua da Bandeira, no Cabral, um dos bairros tradicionais de Curitiba, perto de restaurantes, comércio e serviços. Empreendimento da Maken.</p>
           <ul class="amen">
             <li>Piscina</li><li>Beach tennis</li><li>Academia</li><li>Salão de festas</li><li>Espaço gourmet</li><li>Salão de jogos</li><li>Coworking</li><li>Sala de reunião</li><li>Brinquedoteca</li><li>Playground</li><li>Pet care</li><li>Bicicletário</li><li>Delivery</li>
           </ul>
-          <p class="note">O apartamento de 3 quartos com 91 m² tem o menor valor por m² entre as unidades disponíveis. Algumas unidades têm terraço privativo com infraestrutura para spa.</p>
+          <p class="note">O apartamento de 3 quartos com 91 m², sem mobília, tem o menor valor por m² entre as unidades disponíveis. O decorado do vídeo é vendido já mobiliado. Algumas unidades têm terraço privativo com infraestrutura para spa.</p>
           <div class="f-actions"><a class="btn btn-wa" href="https://wa.me/5541984163630?text=Ol%C3%A1%2C%20Roberto%21%20Vi%20no%20seu%20site%20o%20Gaia%20Cabral%2C%20a%20partir%20de%20R%24%201%20milh%C3%A3o%2C%20e%20gostaria%20de%20saber%20mais." target="_blank" rel="noopener noreferrer"><svg><use href="#wa"/></svg>Saiba mais</a><a class="btn btn-map" href="https://www.google.com/maps/search/?api=1&query=Rua%20da%20Bandeira%2C%20Cabral%2C%20Curitiba%20-%20PR" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>Ver no mapa</a><a class="btn btn-lead" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Gaia+Cabral" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Quero que o corretor entre em contato</a></div>
         </div>
       </article>
@@ -1738,5 +1744,8 @@ document.querySelectorAll('#imoveis article.feature').forEach(function(c){
 });
 document.addEventListener('click',function(e){if(!e.target.closest||!e.target.closest('.share-wrap'))fecha()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')fecha()});
-})();</script>
+})();
+/* pixel: alguém deu play num vídeo de imóvel */
+document.querySelectorAll('.vid video').forEach(function(v){v.addEventListener('play',function(){try{var a=v.closest('.feature');window.fbq&&fbq('trackCustom','AssistiuVideo',{content_name:a&&a.querySelector('h3').textContent})}catch(e){}},{once:true})});
+</script>
 <script>window.addEventListener('hashchange',function(){var id=location.hash.slice(1);if(id&&id!=='zenit-agua-verde')location.replace(new URL('../#'+id,location.href).href)})</script></body></html>
