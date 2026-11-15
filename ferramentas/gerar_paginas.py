@@ -10,6 +10,9 @@ Rode de novo sempre que o index.html mudar:
 
 Rodando sem argumentos, também apaga a página de imóvel que saiu do site
 e reescreve o sitemap.xml (lista de páginas para o Google).
+
+Também gera as páginas de seção listadas em EXTRAS (ex.: /encomende/), que
+abrem o site já rolado até aquela seção.
 """
 import html
 import pathlib
@@ -18,6 +21,16 @@ import sys
 
 SITE = "https://robertoimoveiscwb.com.br"
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
+
+# páginas de seção: id da seção no index.html -> título, descrição e foto da prévia
+EXTRAS = {
+    "encomende": {
+        "titulo": "Encomende seu imóvel | Roberto Imóveis",
+        "og": "Encomende seu imóvel com o Roberto",
+        "descricao": "Não achou o imóvel ideal? Conte o que você procura e o Roberto, corretor em Curitiba, faz a busca e te manda as opções no WhatsApp.",
+        "foto": "img/gaia-living.jpg",
+    },
+}
 
 
 def texto(trecho):
@@ -80,6 +93,45 @@ def gerar(pagina, c):
     return destino
 
 
+def gerar_extra(pagina, sid, x):
+    if f'id="{sid}"' not in pagina:
+        sys.exit(f"seção #{sid} não existe no index.html")
+    url = f"{SITE}/{sid}/"
+    e = lambda t: html.escape(t, quote=True)
+    cabeca = (
+        '<base href="../">'
+        f"<title>{e(x['titulo'])}</title>"
+        f'<meta name="description" content="{e(x["descricao"])}">'
+        f'<link rel="canonical" href="{url}">'
+        '<meta property="og:type" content="website">'
+        '<meta property="og:locale" content="pt_BR">'
+        '<meta property="og:site_name" content="Roberto Imóveis">'
+        f'<meta property="og:title" content="{e(x["og"])}">'
+        f'<meta property="og:description" content="{e(x["descricao"])}">'
+        f'<meta property="og:image" content="{SITE}/{x["foto"]}">'
+        f'<meta property="og:url" content="{url}">'
+        '<meta name="twitter:card" content="summary_large_image">'
+        # link com #imóvel colado nesta página vai para a página principal
+        f"<script>try{{var h=location.hash.slice(1);if(h&&h!=='{sid}')location.replace(new URL('../#'+h,location.href).href)}}catch(e){{}}</script>"
+    )
+    saida = pagina.replace("<html>", '<html lang="pt-BR">', 1)
+    saida = re.sub(r"(<meta name=viewport[^>]*>)", lambda m: m.group(1) + cabeca, saida, count=1)
+    saida = _sem_titulo_do_corpo(saida)
+    # rola até a seção ao abrir; imóvel aberto daqui também funciona aqui mesmo
+    rodape = (
+        "<script>(function(){var s=document.getElementById('" + sid + "');if(!s)return;"
+        "function ir(){if(!location.hash)s.scrollIntoView({block:'start'})}"
+        "ir();var mexeu=false;addEventListener('wheel',function(){mexeu=true},{once:true});addEventListener('touchstart',function(){mexeu=true},{once:true});"
+        "addEventListener('load',function(){if(!mexeu)ir()})})()</script>"
+    )
+    corte = saida.rindex("</body>") if "</body>" in saida else len(saida)
+    saida = saida[:corte] + rodape + saida[corte:]
+    destino = RAIZ / sid / "index.html"
+    destino.parent.mkdir(exist_ok=True)
+    destino.write_text(saida, encoding="utf-8")
+    return destino
+
+
 def _sem_titulo_do_corpo(s):
     corte = s.index("</head>")
     return s[:corte] + re.sub(r"\n?<title>[^<]*</title>", "", s[corte:], count=1)
@@ -103,7 +155,7 @@ def limpar(ids):
 
 
 def sitemap(ids):
-    urls = [f"{SITE}/"] + [f"{SITE}/{i}/" for i in ids] + [f"{SITE}/privacidade/"]
+    urls = [f"{SITE}/"] + [f"{SITE}/{i}/" for i in ids] + [f"{SITE}/{x}/" for x in EXTRAS] + [f"{SITE}/privacidade/"]
     corpo = "".join(f"<url><loc>{u}</loc></url>" for u in urls)
     (RAIZ / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -123,8 +175,10 @@ def main():
     if not feitos:
         sys.exit("nenhum imóvel encontrado com esse id")
     if not pedidos:
+        for sid, x in EXTRAS.items():
+            print("gerado:", gerar_extra(pagina, sid, x).relative_to(RAIZ))
         ids = [c["id"] for c in todos]
-        limpar(set(ids))
+        limpar(set(ids) | set(EXTRAS))
         sitemap(ids)
 
 

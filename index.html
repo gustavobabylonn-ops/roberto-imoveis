@@ -534,6 +534,66 @@ body,.f-head .sub,.info>p,.info .note,.specs dt,.specs dd,.amen li,.units,.facts
 .broker.hero .actions .btn{white-space:nowrap}
 @container (min-width:440px) and (max-width:520px){.broker.hero .actions .btn{font-size:.66rem;padding-inline:.35rem;gap:.3rem}.broker.hero .actions .btn svg{width:13px;height:13px}}
 @media (max-width:560px){.broker.hero{padding:.9rem 1rem 1rem;row-gap:.45rem}.broker.hero .hero-logo{padding-bottom:.6rem}.broker.hero .hero-logo svg{width:38px;height:38px}.broker.hero .hero-logo b{font-size:1.25rem}.broker.hero .portrait{width:96px}.broker.hero .actions{gap:.4rem;padding-top:.65rem}.broker.hero .actions .btn{padding-block:.5rem}}
+/* imóveis parecidos (dentro da janela de detalhes) */
+#imoveis .feature.open>.sim{grid-column:1/-1}
+.sim{display:grid;gap:.8rem;padding-top:1.2rem;border-top:1px solid var(--line);min-width:0}
+.sim-top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem 1rem;flex-wrap:wrap}
+.sim h4{font-family:var(--display);font-size:1.35rem;font-weight:600;margin:0;line-height:1.15}
+.sim-more{font:inherit;font-size:.82rem;font-weight:600;color:var(--accent);background:none;border:0;padding:.2rem 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.sim-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.sim-card{font:inherit;text-align:left;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow:hidden;padding:0;cursor:pointer;display:grid;grid-template-rows:auto 1fr;min-width:0;transition:box-shadow .2s ease,transform .2s ease}
+.sim-card:hover{box-shadow:0 10px 24px rgba(30,20,15,.12);transform:translateY(-2px)}
+.sim-card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--line)}
+.sim-card .t{display:grid;gap:.15rem;padding:.6rem .7rem .7rem;align-content:start}
+.sim-card .n{font-family:var(--display);font-weight:600;font-size:1rem;line-height:1.2}
+.sim-card .p,.sim-card .s{font-size:.75rem;color:var(--muted);line-height:1.35}
+.sim-card .v{font-size:.9rem;font-weight:700;color:var(--accent);margin-top:.15rem}
+.sim-card .v small{font-size:.7rem;font-weight:600;color:var(--muted);margin-right:.3rem}
+@media (max-width:640px){.sim-list{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:.3rem;-webkit-overflow-scrolling:touch}.sim-card{scroll-snap-align:start}}
+
+/* encomende seu imóvel */
+.enc .enc-wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:3rem;align-items:start}
+@media (max-width:860px){.enc .enc-wrap{grid-template-columns:1fr;gap:1.8rem}}
+.enc .head{margin-bottom:1.6rem}
+.enc h2 .hl{color:var(--accent)}
+.enc-steps{list-style:none;margin:0;padding:0;display:grid;gap:1rem;counter-reset:e}
+.enc-steps li{counter-increment:e;display:grid;grid-template-columns:auto 1fr;gap:.2rem .9rem;align-items:start}
+.enc-steps li::before{content:counter(e);grid-row:span 2;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.95rem}
+.enc-steps b{font-size:1rem}
+.enc-steps span{color:var(--muted);font-size:.92rem}
+.enc-card{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.5rem 1.4rem 1.3rem;box-shadow:0 18px 45px rgba(30,20,15,.12)}
+.enc-card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
+.enc-card h3{font-family:var(--display);font-size:1.5rem;margin:0 0 .25rem}
+.enc-card .enc-sub{color:var(--muted);font-size:.88rem;margin:0 0 1.1rem}
+.enc form{display:grid;gap:1rem}
+.enc-q{border:0;margin:0;padding:0;min-width:0}
+.enc-q legend,.enc-f>span{display:block;padding:0;margin:0 0 .45rem;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.enc-q legend i,.enc-f>span i{font-style:normal;text-transform:none;letter-spacing:0;font-weight:400}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chips label{position:relative;display:inline-flex}
+.chips input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.chips span{display:inline-block;padding:.5rem .9rem;border:1px solid var(--line);border-radius:999px;font-size:.88rem;line-height:1.2;background:var(--bg);color:var(--fg);transition:background .15s ease,border-color .15s ease,color .15s ease}
+.chips label:hover span{border-color:var(--accent)}
+.chips input:checked+span{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.chips input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.enc-f{display:grid;min-width:0}
+.enc input:not([type=radio]),.enc textarea{font:inherit;font-size:16px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.65rem .75rem;width:100%;box-sizing:border-box}
+.enc textarea{min-height:64px;resize:vertical}
+.enc input:not([type=radio]):focus,.enc textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.enc-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media (max-width:480px){.enc-row{grid-template-columns:1fr}.enc-card{padding:1.3rem 1rem 1.1rem}}
+.enc-err{color:#B42318;font-size:.86rem;font-weight:600}
+:root[data-theme="dark"] .enc-err{color:#FF8A80}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .enc-err{color:#FF8A80}}
+.enc-send{font:inherit;font-weight:700;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:.95rem 1rem;cursor:pointer}
+.enc-send[disabled]{opacity:.6;cursor:wait}
+.enc-lgpd{font-size:.72rem;color:var(--muted);line-height:1.4}
+.enc-ok{text-align:center;display:grid;gap:.8rem;justify-items:center;padding:1.2rem 0 .4rem}
+.enc-ok b{font-family:var(--display);font-size:1.7rem}
+.enc-ok p{color:var(--muted);max-width:26rem}
+.enc-ok .btn{background:var(--pill);color:var(--pill-fg)}
+.enc-ok .enc-wa{font-size:.86rem;font-weight:600;color:var(--wa)}
+.f-empty .f-enc{color:var(--accent);font-weight:600}
 /* formulário de contato (HubSpot) */
 .lf{border:0;padding:0;background:transparent;max-width:min(440px,calc(100vw - 32px));width:100%;color:var(--fg)}
 .lf::backdrop{background:rgba(20,16,16,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
@@ -670,7 +730,7 @@ h2{font-weight:600}
     <div class="wrap">
       <div class="mark"><svg role="img" aria-label="Logo Roberto Imóveis"><use href="#ri"/></svg><div><b>ROBERTO</b><span>Corretor de imóveis</span></div></div>
       <nav aria-label="Seções">
-        <a href="#imoveis">Imóveis</a><a href="#vender">Vender</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
+        <a href="#imoveis">Imóveis</a><a href="#encomende">Encomende</a><a href="#vender">Vender</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
       </nav>
       <button type="button" class="theme-tg" id="theme-tg" aria-label="Alternar modo noturno" title="Modo noturno / modo dia"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
       <div class="head-actions">
@@ -738,7 +798,7 @@ h2{font-weight:600}
           <label for="f-status"><span>Situação</span><select id="f-status"><option value="">Todas</option><option value="pronto">Pronto para morar</option><option value="planta">Na planta ou em construção</option></select></label>
           <button type="button" class="f-clear" id="f-clear">Limpar filtros</button>
         </div>
-        <p class="f-empty" id="f-empty" hidden><span id="f-empty-msg">Nenhum imóvel com esses filtros.</span> <button type="button" id="f-clear2">Limpar filtros</button></p>
+        <p class="f-empty" id="f-empty" hidden><span id="f-empty-msg">Nenhum imóvel com esses filtros.</span> <button type="button" id="f-clear2">Limpar filtros</button> ou <a class="f-enc" href="#encomende">encomende seu imóvel</a>.</p>
       </div>
       <article class="feature" data-id="gaia-cabral" data-area="68,2 a 126 m²" data-vagas="1 a 2" data-busca="gaia maken cobertura" data-price="930900" data-cidade="Curitiba" data-uf="PR" data-bairro="Cabral" data-qmin="2" data-qmax="3" data-status="pronto">
         <header class="f-head">
@@ -1372,6 +1432,65 @@ h2{font-weight:600}
 </div>
 
 <main>
+  <section class="block enc" id="encomende" aria-labelledby="enc-t">
+    <div class="wrap enc-wrap">
+      <div class="enc-txt">
+        <div class="head">
+          <span class="eyebrow">Encomende seu imóvel</span>
+          <h2 id="enc-t">Não achou o imóvel ideal? <span class="hl">Eu procuro para você.</span></h2>
+          <p>Nem todo imóvel bom está anunciado. Conte o que você procura e eu faço a busca nas construtoras, na rede da Lopes e com outros corretores. Você só recebe o que combina com você.</p>
+        </div>
+        <ol class="enc-steps">
+          <li><b>Você conta o que procura</b><span>Leva um minuto e não tem compromisso.</span></li>
+          <li><b>Eu faço a busca</b><span>Separo só os imóveis que cabem no seu orçamento e no seu jeito de viver.</span></li>
+          <li><b>Você recebe as opções no WhatsApp</b><span>Com fotos e valores. Se gostar de algum, a gente marca a visita.</span></li>
+        </ol>
+      </div>
+      <div class="enc-card">
+        <div data-enc-step="form">
+          <h3>O que você procura?</h3>
+          <p class="enc-sub">Responda o que souber. O resto a gente conversa.</p>
+          <form id="enc-form" novalidate>
+            <fieldset class="enc-q"><legend>Tipo de imóvel</legend>
+              <div class="chips"><label><input type="radio" name="tipo" value="Apartamento"><span>Apartamento</span></label><label><input type="radio" name="tipo" value="Casa ou sobrado"><span>Casa ou sobrado</span></label><label><input type="radio" name="tipo" value="Cobertura"><span>Cobertura</span></label><label><input type="radio" name="tipo" value="Studio"><span>Studio</span></label><label><input type="radio" name="tipo" value="Terreno"><span>Terreno</span></label><label><input type="radio" name="tipo" value="Comercial"><span>Comercial</span></label></div>
+            </fieldset>
+            <label class="enc-f"><span>Bairros ou região <i>(opcional)</i></span><input name="regiao" autocomplete="off" placeholder="Ex.: Água Verde, Ecoville, perto do trabalho"></label>
+            <fieldset class="enc-q"><legend>Quartos <i>(opcional)</i></legend>
+              <div class="chips"><label><input type="radio" name="quartos" value="1"><span>1</span></label><label><input type="radio" name="quartos" value="2"><span>2</span></label><label><input type="radio" name="quartos" value="3"><span>3</span></label><label><input type="radio" name="quartos" value="4 ou mais"><span>4 ou mais</span></label></div>
+            </fieldset>
+            <fieldset class="enc-q"><legend>Quanto quer investir?</legend>
+              <div class="chips"><label><input type="radio" name="valor" value="Até R$ 500 mil"><span>Até R$ 500 mil</span></label><label><input type="radio" name="valor" value="R$ 500 mil a R$ 1 milhão"><span>R$ 500 mil a 1 milhão</span></label><label><input type="radio" name="valor" value="R$ 1 a 2 milhões"><span>R$ 1 a 2 milhões</span></label><label><input type="radio" name="valor" value="Acima de R$ 2 milhões"><span>Acima de R$ 2 milhões</span></label></div>
+            </fieldset>
+            <fieldset class="enc-q"><legend>Como pretende pagar?</legend>
+              <div class="chips"><label><input type="radio" name="pagamento" value="À vista"><span>À vista</span></label><label><input type="radio" name="pagamento" value="Financiamento"><span>Financiamento</span></label></div>
+            </fieldset>
+            <fieldset class="enc-q"><legend>Pronto ou na planta? <i>(opcional)</i></legend>
+              <div class="chips"><label><input type="radio" name="situacao" value="Pronto para morar"><span>Pronto para morar</span></label><label><input type="radio" name="situacao" value="Na planta"><span>Na planta</span></label><label><input type="radio" name="situacao" value="Tanto faz"><span>Tanto faz</span></label></div>
+            </fieldset>
+            <fieldset class="enc-q"><legend>Quando pretende comprar? <i>(opcional)</i></legend>
+              <div class="chips"><label><input type="radio" name="prazo" value="Nos próximos 3 meses"><span>Nos próximos 3 meses</span></label><label><input type="radio" name="prazo" value="Em até 6 meses"><span>Em até 6 meses</span></label><label><input type="radio" name="prazo" value="Ainda estou pesquisando"><span>Ainda estou pesquisando</span></label></div>
+            </fieldset>
+            <label class="enc-f"><span>Algo indispensável? <i>(opcional)</i></span><textarea name="detalhes" rows="2" placeholder="Ex.: sacada com churrasqueira, aceita pet, 2 vagas"></textarea></label>
+            <div class="enc-row">
+              <label class="enc-f"><span>Seu nome</span><input name="nome" autocomplete="name"></label>
+              <label class="enc-f"><span>WhatsApp com DDD</span><input name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(41) 99999-9999"></label>
+            </div>
+            <label class="enc-f"><span>E-mail <i>(opcional)</i></span><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com"></label>
+            <p class="enc-err" data-enc-err role="alert" hidden></p>
+            <button class="enc-send" type="submit">Encomendar meu imóvel</button>
+            <p class="enc-lgpd">Seus dados são usados só para eu entrar em contato sobre imóveis, e não são compartilhados.</p>
+          </form>
+        </div>
+        <div class="enc-ok" data-enc-step="ok" hidden tabindex="-1">
+          <b>Encomenda recebida!</b>
+          <p>Vou começar a busca e te chamo no WhatsApp com as opções que combinam com você.</p>
+          <a class="btn" href="#imoveis">Ver imóveis disponíveis</a>
+          <a class="enc-wa" href="https://wa.me/5541984163630" target="_blank" rel="noopener noreferrer">Prefere falar agora? Abrir o WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="block room" style="--room:url(img/gaia-living.jpg);--pos:center 60%">
     <div class="wrap">
       <div class="head">
@@ -1616,6 +1735,47 @@ function buildCard(L,i){
   L.renderPrice();
 }
 
+/* ===== imóveis parecidos (calculado na hora de abrir, para pegar preço de promoção atual) ===== */
+function similarity(a,b){
+  var pa=currentPrice(a),pb=currentPrice(b),s=0;
+  if(pa>0&&pb>0)s-=Math.abs(Math.log(pa/pb))*3;/* preço perto pesa mais */
+  if(a.roomsMin&&b.roomsMin){if(b.roomsMin<=a.roomsMax&&b.roomsMax>=a.roomsMin)s+=1.5;else s-=.7*Math.min(Math.abs(b.roomsMin-a.roomsMax),Math.abs(a.roomsMin-b.roomsMax))}
+  if(a.city===b.city)s+=1;else s-=2;
+  if(a.neighborhood&&a.neighborhood===b.neighborhood)s+=.6;
+  if(a.status&&a.status===b.status)s+=.5;
+  return s;
+}
+function renderSimilar(L){
+  if(listings.length<2)return;
+  if(!L.simBox){
+    L.simBox=make('section','sim');L.simBox.setAttribute('aria-label','Imóveis parecidos');
+    var top=make('div','sim-top');top.appendChild(make('h4',null,'Imóveis parecidos'));
+    var more=make('button','sim-more','Não é bem isso? Encomende seu imóvel ›');more.type='button';more.addEventListener('click',goToRequest);top.appendChild(more);
+    L.simBox.appendChild(top);L.simList=make('div','sim-list');L.simBox.appendChild(L.simList);
+    L.el.appendChild(L.simBox);
+  }
+  L.simList.textContent='';
+  listings.filter(function(o){return o!==L}).map(function(o){return{o:o,s:similarity(L,o)}})
+    .sort(function(x,y){return y.s-x.s||x.o.order-y.o.order}).slice(0,3)
+    .forEach(function(x){var o=x.o;
+      var b=make('button','sim-card');b.type='button';b.setAttribute('aria-label','Ver '+o.name);
+      var im=make('img');im.src=o.cover.src;im.alt='';im.loading='lazy';im.draggable=false;b.appendChild(im);
+      var t=make('span','t');t.appendChild(make('span','n',o.name));t.appendChild(make('span','p',o.place));
+      var specs=[roomsText(o),o.area].filter(Boolean).join(' · ');if(specs)t.appendChild(make('span','s',specs));
+      var v=make('span','v');if(priceLabel(o)!=='Valor')v.appendChild(make('small',null,priceLabel(o)));v.appendChild(document.createTextNode(money(currentPrice(o))));t.appendChild(v);
+      b.appendChild(t);
+      b.addEventListener('click',function(){if(o.el.hidden)filters.clear('Filtros limpos para mostrar '+o.name);detail.open(o)});
+      L.simList.appendChild(b)});
+}
+/* "Encomende seu imóvel": fecha o imóvel aberto e rola até o formulário, em qualquer página do site */
+function goToRequest(e){
+  var sec=byId('encomende');if(!sec)return;
+  if(e&&e.preventDefault)e.preventDefault();
+  if(detail.current()){detail.close(true);try{if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(_){}}
+  setTimeout(function(){sec.scrollIntoView({behavior:REDUCED_MOTION?'auto':'smooth',block:'start'})},30);
+}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#encomende"]');if(a)goToRequest(e)});
+
 /* ===== janela de detalhes (uma por vez, com histórico do navegador) ===== */
 var detail=(function(){
   var backdrop=make('div','fx-back');backdrop.hidden=true;document.body.appendChild(backdrop);
@@ -1629,6 +1789,7 @@ var detail=(function(){
     current=L;
     var el=L.el;el.classList.add('open');el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label',L.name);
     if(!L.closeButton){var x=make('button','fx-close');x.type='button';x.setAttribute('aria-label','Fechar detalhes');x.innerHTML='&times;';x.addEventListener('click',function(){close()});L.closeButton=x;el.insertBefore(x,L.card.nextSibling)}
+    renderSimilar(L);
     backdrop.hidden=false;lockScroll();setInert(L,true);el.scrollTop=0;
     if(L.layoutCarousel)L.layoutCarousel();
     L.closeButton.focus({preventScroll:true});
@@ -1832,6 +1993,44 @@ var HUBSPOT_PORTAL='52270219', HUBSPOT_FORM='758d45a9-38f2-481b-acf7-3baed47bcb9
     .catch(function(){btn.disabled=false;
       var wa='https://wa.me/5541984163630?text='+encodeURIComponent('Olá, Roberto! Vi no seu site e gostaria que você entrasse em contato.\nNome: '+nome+'\nWhatsApp: '+foneTxt+(em?'\nE-mail: '+em:'')+'\nImóvel: '+im+'\nMelhor horário: '+hr+(msg?'\nMensagem: '+msg:''));
       err.textContent='Não deu para enviar pelo formulário agora. ';var a=document.createElement('a');a.href=wa;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Toque aqui para enviar seus dados pelo WhatsApp.';a.style.color='inherit';a.style.fontWeight='700';err.appendChild(a);err.hidden=false});
+  });
+})();
+</script>
+<script>
+/* Encomende seu imóvel: manda para o mesmo formulário do HubSpot, com tudo no campo de mensagem. Se o HubSpot falhar, oferece o WhatsApp. */
+(function(){
+  var f=document.getElementById('enc-form');if(!f)return;
+  var card=f.closest('.enc-card'),err=f.querySelector('[data-enc-err]'),btn=f.querySelector('.enc-send'),ok=card.querySelector('[data-enc-step="ok"]');
+  function val(n){var el=f.elements[n];return el?(el.value||'').trim():''}
+  function erro(t,campo){err.textContent=t;err.hidden=false;var alvo=campo&&f.elements[campo];
+    var foco=alvo&&(alvo.length?alvo[0]:alvo);if(foco){(foco.closest('fieldset')||foco).scrollIntoView({block:'center',behavior:'smooth'});if(!foco.type||foco.type!=='radio')foco.focus({preventScroll:true})}}
+  f.addEventListener('change',function(){err.hidden=true});
+  f.addEventListener('submit',function(ev){ev.preventDefault();err.hidden=true;
+    var tipo=val('tipo'),valor=val('valor'),pag=val('pagamento'),nome=val('nome'),fone=val('whatsapp'),tel=fone.replace(/\D/g,''),em=val('email');
+    if(!tipo)return erro('Escolha o tipo de imóvel.','tipo');
+    if(!valor)return erro('Escolha quanto quer investir.','valor');
+    if(!pag)return erro('Escolha como pretende pagar.','pagamento');
+    if(nome.length<2)return erro('Digite seu nome.','nome');
+    if(tel.length<10)return erro('Digite seu WhatsApp com DDD.','whatsapp');
+    if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))return erro('Confira o e-mail, ou deixe em branco.','email');
+    var partes=[['Tipo',tipo],['Região',val('regiao')],['Quartos',val('quartos')],['Valor',valor],['Pagamento',pag],['Situação',val('situacao')],['Prazo',val('prazo')],['Indispensável',val('detalhes')]].filter(function(p){return p[1]});
+    var texto='ENCOMENDA DE IMÓVEL | '+partes.map(function(p){return p[0]+': '+p[1]}).join(' | ');
+    var base=[{name:'firstname',value:nome},{name:'phone',value:fone}],tentativas=[];
+    if(em)tentativas.push(base.concat([{name:'email',value:em},{name:'message',value:texto}]));
+    tentativas.push(base.concat([{name:'message',value:texto}]));
+    tentativas.push(base.concat([{name:'email',value:(tel.length<=11?'55'+tel:tel)+'@lead.robertoimoveiscwb.com.br'},{name:'message',value:texto}]));
+    btn.disabled=true;
+    function enviar(i){
+      if(typeof HUBSPOT_PORTAL==='undefined'||!HUBSPOT_PORTAL||!HUBSPOT_FORM)return Promise.reject();
+      return fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HUBSPOT_PORTAL+'/'+HUBSPOT_FORM,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({fields:tentativas[i],context:{pageUri:location.href,pageName:'Encomende seu imóvel'}})})
+      .then(function(r){if(r.ok)return true;if(i+1<tentativas.length)return enviar(i+1);throw r},function(e){if(i+1<tentativas.length)return enviar(i+1);throw e})}
+    enviar(0).then(function(){
+      f.parentNode.hidden=true;ok.hidden=false;ok.focus({preventScroll:true});card.scrollIntoView({block:'center',behavior:'smooth'});f.reset();
+      try{window.fbq&&fbq('track','Lead',{content_name:'Encomenda de imóvel'})}catch(e){}
+    }).catch(function(){btn.disabled=false;
+      var wa='https://wa.me/5541984163630?text='+encodeURIComponent('Olá, Roberto! Quero encomendar um imóvel.\nNome: '+nome+'\nWhatsApp: '+fone+(em?'\nE-mail: '+em:'')+'\n'+partes.map(function(p){return p[0]+': '+p[1]}).join('\n'));
+      err.textContent='Não deu para enviar pelo formulário agora. ';var a=document.createElement('a');a.href=wa;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Toque aqui para mandar sua encomenda pelo WhatsApp.';a.style.color='inherit';err.appendChild(a);err.hidden=false});
   });
 })();
 </script>
