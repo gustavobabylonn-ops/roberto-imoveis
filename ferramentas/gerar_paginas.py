@@ -30,6 +30,12 @@ EXTRAS = {
         "descricao": "Não achou o imóvel ideal? Conte o que você procura e o Roberto, corretor em Curitiba, faz a busca e te manda as opções no WhatsApp.",
         "foto": "img/gaia-living.jpg",
     },
+    "vender": {
+        "titulo": "Venda seu imóvel com o Roberto | Roberto Imóveis",
+        "og": "Quer vender seu imóvel? Peça uma avaliação",
+        "descricao": "Conte sobre o seu imóvel e o Roberto, corretor em Curitiba associado da Lopes Home, faz a avaliação e cuida da venda do começo ao fim.",
+        "foto": "img/gaia-terraco.jpg",
+    },
 }
 
 
