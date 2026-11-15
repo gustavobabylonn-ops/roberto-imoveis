@@ -245,6 +245,7 @@ section.block{padding-block:4.5rem}
 @media (max-width:480px){.ls-cap b{font-size:1.15rem}}
 @media (prefers-reduced-motion:reduce){.ls img,.ls img.on{transform:none;transition:opacity .4s}}
 .list-intro .filters{margin-bottom:0}
+.list-head{touch-action:pan-y;-webkit-user-select:none;user-select:none}
 .f-panel[hidden],.f-empty[hidden],.f-badge[hidden]{display:none}
 @media (max-width:480px){.list-intro{padding:1.8rem 1rem .2rem}}
 .hero-logo{display:flex;align-items:center;gap:1.1rem}
@@ -1960,6 +1961,24 @@ var slider=(function(){
     if(L.el.hidden)filters.clear('Filtros limpos para mostrar '+L.name);
     detail.open(L)});
   document.addEventListener('visibilitychange',function(){if(document.hidden)clearInterval(timer);else restart()});
+  /* arrastar com o dedo (ou o mouse) para passar os imóveis */
+  var sx=0,sy=0,dx=0,drag=0,swipedAt=0;/* drag: 0 nada, 1 decidindo, 2 horizontal, -1 vertical */
+  function skip(t){return t.closest&&t.closest('input,select,textarea,label,.f-panel,.f-search')}
+  function go(step){show((current+step+slides.length)%slides.length);restart();swipedAt=Date.now()}
+  function start(x,y,t){if(slides.length<2||skip(t)){drag=0;return}sx=x;sy=y;dx=0;drag=1}
+  function move(x,y,ev){if(drag<1)return;dx=x-sx;var dy=y-sy;
+    if(drag===1){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;drag=Math.abs(dx)>Math.abs(dy)?2:-1;if(drag===2)clearInterval(timer)}
+    if(drag===2&&ev.cancelable)ev.preventDefault()}
+  function end(){if(drag===2){if(Math.abs(dx)>35)go(dx<0?1:-1);else restart()}drag=0}
+  intro.addEventListener('touchstart',function(e){var p=e.touches[0];if(e.touches.length>1){drag=0;return}start(p.clientX,p.clientY,e.target)},{passive:true});
+  intro.addEventListener('touchmove',function(e){var p=e.touches[0];move(p.clientX,p.clientY,e)},{passive:false});
+  intro.addEventListener('touchend',end);intro.addEventListener('touchcancel',function(){drag=0;restart()});
+  intro.addEventListener('mousedown',function(e){if(e.button===0){start(e.clientX,e.clientY,e.target);if(drag)e.preventDefault()}});
+  window.addEventListener('mousemove',function(e){move(e.clientX,e.clientY,e)});
+  window.addEventListener('mouseup',end);
+  /* não abrir o imóvel se o toque foi um arraste */
+  intro.addEventListener('click',function(e){if(Date.now()-swipedAt<450&&e.target.closest&&e.target.closest('#ls-cap,#ls-dots')){e.stopPropagation();e.preventDefault()}},true);
+  intro.addEventListener('keydown',function(e){if(e.target===cap||e.target.parentNode===dotsBox){if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1)}});
   show(0);restart();
   return{refresh:function(){if(current>=0)fill(slides[current])}};
 })();
