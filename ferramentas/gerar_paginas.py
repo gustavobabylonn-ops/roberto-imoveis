@@ -103,7 +103,7 @@ def limpar(ids):
 
 
 def sitemap(ids):
-    urls = [f"{SITE}/"] + [f"{SITE}/{i}/" for i in ids]
+    urls = [f"{SITE}/"] + [f"{SITE}/{i}/" for i in ids] + [f"{SITE}/privacidade/"]
     corpo = "".join(f"<url><loc>{u}</loc></url>" for u in urls)
     (RAIZ / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
