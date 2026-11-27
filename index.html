@@ -914,6 +914,53 @@ h2{font-weight:600}
 .topbar.lux .mark b,:root[data-theme="light"] .topbar.lux .mark b{color:var(--fg)}
 .topbar.lux .mark span,:root[data-theme="light"] .topbar.lux .mark span{color:#A22F2E;font-weight:600}
 @media (max-width:480px){.topbar.lux .mark svg{width:38px;height:38px;padding:6px;border-radius:10px}}
+
+/* Carteirinha compacta no cabeçalho, ao lado de "Prefere que entremos em contato?" */
+.lux-hero{grid-template-columns:minmax(0,1fr)!important}
+.lux-copy .lux-title,.lux-title{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,5.4vw,4.8rem);line-height:1.04;max-width:12em;text-wrap:balance}
+@media (min-width:981px) and (max-width:1180px){.lux-copy .lux-title{font-size:clamp(2.5rem,5.4vw,4.8rem)}}
+.topbar.lux header .wrap{max-width:1240px}
+.topbar.lux .head-actions{display:flex;flex-direction:row;align-items:center;gap:18px}
+.mini-card{display:inline-flex;align-items:center;gap:10px;flex:none;padding:6px 12px 6px 6px;border-radius:999px;text-decoration:none;color:var(--fg);background:rgba(255,255,255,.24);-webkit-backdrop-filter:blur(14px) saturate(1.05) brightness(1.06);backdrop-filter:blur(14px) saturate(1.05) brightness(1.06);border:1px solid rgba(255,255,255,.6);box-shadow:0 8px 22px rgba(30,20,15,.10),inset 0 1px 0 rgba(255,255,255,.5);transition:background .2s,transform .2s}
+.mini-card:hover{background:rgba(255,255,255,.45);transform:translateY(-1px)}
+.mc-photo{position:relative;flex:none;width:46px;height:46px;border-radius:50%;padding:2px;background:#A22F2E;box-shadow:0 4px 10px rgba(162,47,46,.25)}
+.mc-photo img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 15%;border:2px solid #fff;box-sizing:border-box}
+.mc-txt{display:flex;flex-direction:column;line-height:1.15;white-space:nowrap}
+.mc-txt b{font-family:"Montserrat",var(--body);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fg)}
+.mc-txt small{font-family:"Montserrat",var(--body);font-size:.6rem;font-weight:600;letter-spacing:.06em;color:#A22F2E}
+.mc-lopes{display:flex;flex-direction:column;align-items:center;gap:1px;padding-left:10px;border-left:1px solid rgba(162,47,46,.25)}
+.mc-lopes small{font-family:"Montserrat",var(--body);font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.mc-lopes img{height:24px;width:auto;display:block}
+@media (min-width:721px) and (max-width:1300px){.topbar.lux nav{gap:.9rem;padding-inline:.6rem}.topbar.lux nav a{letter-spacing:.1em;font-size:.62rem}.topbar.lux .cta-call small{display:none}.topbar.lux .head-actions{gap:12px}}
+@media (min-width:721px) and (max-width:1080px){.mc-lopes{display:none}.mini-card{padding-right:10px}}
+@media (max-width:720px){
+.topbar.lux header .wrap{flex-wrap:wrap}
+.topbar.lux .head-actions{flex-wrap:wrap;gap:10px}
+.mini-card{order:-1;margin-left:auto}
+}
+
+.topbar.lux header .wrap,.topbar.lux .lux-hero,.topbar.lux .lux-foot{max-width:1180px}
+.topbar.lux .mark{flex:none}
+.topbar.lux nav{flex:1 1 auto;justify-content:center;gap:clamp(.9rem,1.6vw,1.6rem);padding-inline:1rem;min-width:0}
+@media (min-width:721px){.topbar.lux .cta-call small{display:none}.topbar.lux .cta-call b{font-size:.9rem;white-space:nowrap}.topbar.lux .cta-wrap{gap:.35rem}}
+@media (min-width:721px) and (max-width:1180px){.topbar.lux nav a{font-size:.6rem;letter-spacing:.1em}.topbar.lux .head-actions{gap:10px}}
+@media (min-width:721px) and (max-width:1000px){.topbar.lux nav{display:none}}
+
+@media (max-width:720px){
+.topbar.lux header .wrap{position:relative}
+.mini-card{position:absolute;top:14px;right:max(16px,env(safe-area-inset-right,0px));margin:0;padding:4px 10px 4px 4px;gap:7px}
+.mc-lopes{display:none}
+.mc-photo{width:38px;height:38px}
+.mc-txt b{font-size:.66rem}
+.mc-txt small{font-size:.54rem}
+}
+@media (max-width:370px){.mc-txt{display:none}.mini-card{padding:4px}}
+
+/* Botões do topo: vidro com branco a 87% */
+.topbar.lux .cta-pill,:root[data-theme="light"] .topbar.lux .cta-pill,.topbar.lux .lux-btn,:root[data-theme="light"] .lux-btn{background:rgba(255,255,255,.87)!important;-webkit-backdrop-filter:blur(14px) saturate(1.05);backdrop-filter:blur(14px) saturate(1.05);border:1px solid rgba(255,255,255,.95)!important;color:var(--fg)!important;box-shadow:0 8px 22px rgba(30,20,15,.10),inset 0 1px 0 rgba(255,255,255,.9)!important}
+.topbar.lux .cta-pill:hover,:root[data-theme="light"] .topbar.lux .cta-pill:hover,.topbar.lux .lux-btn:hover,:root[data-theme="light"] .lux-btn:hover{background:rgba(255,255,255,.97)!important;border-color:rgba(162,47,46,.45)!important;box-shadow:0 10px 26px rgba(30,20,15,.14),inset 0 1px 0 #fff!important}
+.topbar.lux .cta-pill svg{color:#A22F2E}
+.lux-btn svg{color:#A22F2E}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -937,6 +984,11 @@ h2{font-weight:600}
         <a href="#imoveis">Imóveis</a><a href="#encomende">Encomende</a><a href="#vender">Vender</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
       </nav>
       <div class="head-actions">
+        <a class="mini-card" href="#sobre" aria-label="Roberto, corretor de imóveis, CRECI F-31554, associado da Lopes Home">
+          <span class="mc-photo"><img src="img/roberto-retrato.jpg" alt="" width="853" height="1280"></span>
+          <span class="mc-txt"><b>Roberto</b><small>CRECI F-31554</small></span>
+          <span class="mc-lopes"><small>Associado</small><img src="img/lopes-home.png" alt="Lopes Home" width="599" height="512"></span>
+        </a>
         <a class="sell-pill" href="#vender" aria-label="Vender meu imóvel"><svg><use href="#house"/></svg><span>Vender meu imóvel</span></a>
         <div class="cta-wrap"><span class="cta-call"><b>Prefere que entremos em contato?</b><small>Deixe seus dados e entraremos em contato assim que possível.</small></span>
           <a class="sell-pill cta-pill" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform?usp=pp_url&amp;entry.80691539=Procuro+outro+im%C3%B3vel" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Solicitar contato</a>
@@ -947,33 +999,13 @@ h2{font-weight:600}
   <div class="wrap lux-hero">
    <div class="lux-copy">
     <p class="lux-eyebrow"><span></span>Roberto · Corretor de imóveis<span></span></p>
-    <p class="lux-title">Seu próximo<br> endereço, com<br> cuidado em<br> cada detalhe</p>
+    <h1 class="lux-title">Seu próximo endereço, com cuidado em cada detalhe</h1>
     <p class="lux-sub">Do primeiro apartamento ao alto padrão, em Curitiba e região. Eu acompanho você da primeira visita à entrega das chaves.</p>
     <div class="lux-actions">
       <a class="lux-btn" href="#imoveis">Ver imóveis <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="lux-link" href="https://wa.me/5541984163630?text=Ol%C3%A1%2C%20Roberto%21%20Vi%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20visita." target="_blank" rel="noopener noreferrer" data-ev="visita">Agendar visita</a>
     </div>
    </div>
-    <aside class="broker band hero" aria-label="Roberto, corretor de imóveis">
-    <div class="hero-text">
-      <div class="hero-logo" role="img" aria-label="Logo Roberto, corretor de imóveis">
-        <svg aria-hidden="true"><use href="#ri"/></svg>
-        <div><b>ROBERTO</b><span>Corretor de imóveis</span></div>
-      </div>
-      <div class="lopes"><span>Corretor<br>associado da</span><img src="img/lopes-home.png" alt="Lopes Home" width="599" height="512"></div>
-      <h1>Experiência e cuidado em cada negociação.</h1>
-      <p>Eu acompanho você em cada visita e cada papel, até a entrega das chaves.</p>
-      <div class="actions">
-        <a class="btn btn-wa" href="https://wa.me/5541984163630?text=Ol%C3%A1%2C%20Roberto%21%20Vi%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20visita." target="_blank" rel="noopener noreferrer"><svg><use href="#wa"/></svg>Agendar visita</a>
-        <a class="btn btn-sell" href="#vender"><svg><use href="#house"/></svg>Vender imóvel</a>
-        <a class="btn btn-lead" href="https://docs.google.com/forms/d/e/1FAIpQLSfCXTlaJvnpnRTlrfFFmb_GrKZyQjJ2poliWBY1eIwTWjpVdA/viewform" target="_blank" rel="noopener noreferrer"><svg><use href="#phone"/></svg>Deixar contato</a>
-      </div>
-    </div>
-    <div class="portrait">
-      <div class="frame"><img src="img/roberto-retrato.jpg" alt="Roberto, corretor de imóveis, sorrindo" width="853" height="1280"></div>
-      <div class="tag"><b>ROBERTO</b>CRECI F-31554</div>
-    </div>
-      </aside>
   </div>
   <div class="lux-foot wrap">
     <a class="lux-scroll" href="#imoveis" aria-label="Rolar até os imóveis"><i aria-hidden="true"></i>Rolar</a>
