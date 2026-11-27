@@ -809,6 +809,55 @@ h2{font-weight:600}
 /* Só modo claro: sem botão de modo noturno */
 .theme-tg{display:none!important}
 @media (min-width:721px) and (max-width:1240px){header .wrap{padding-right:max(16px,env(safe-area-inset-right,0px))}}
+
+/* Carteirinha no topo: alinhada ao bloco de texto e com geometria padronizada */
+@media (min-width:981px){
+.lux-hero{align-items:stretch}
+.lux-copy{display:flex;flex-direction:column;justify-content:space-between}
+.lux-copy>*{margin-top:0;margin-bottom:0}
+.lux-copy .lux-title{margin-block:1.1rem 0}.lux-copy .lux-sub{margin-block:1.2rem 1.8rem}
+.topbar.lux .broker.hero{align-self:stretch}
+}
+.topbar.lux .broker.hero{display:grid;grid-template-columns:minmax(0,1fr) 132px;grid-template-areas:"logo logo" "lopes photo" "h1 photo" "p photo" "act act";grid-template-rows:auto auto auto 1fr auto;column-gap:24px;row-gap:10px;align-content:stretch;align-items:start;padding:24px;border-radius:16px;border:1px solid rgba(255,255,255,.14);max-width:480px}
+.topbar.lux .broker.hero .hero-logo{grid-area:logo;justify-content:flex-start;gap:14px;margin:0 0 4px;padding:0 0 16px;border-bottom:1px solid rgba(255,255,255,.2)}
+.topbar.lux .broker.hero .hero-logo svg{width:46px;height:46px}
+.topbar.lux .broker.hero .hero-logo b{font-size:1.6rem;letter-spacing:.16em;line-height:1}
+.topbar.lux .broker.hero .hero-logo span{font-size:.58rem;letter-spacing:.32em}
+.topbar.lux .broker.hero .lopes{grid-area:lopes;justify-self:start;align-self:start;margin:0;padding:6px 12px;border-radius:10px;box-shadow:none}
+.topbar.lux .broker.hero .lopes img{height:32px}
+.topbar.lux .broker.hero h1{grid-area:h1;margin:0;font-size:1.3rem;line-height:1.25}
+.topbar.lux .broker.hero p{grid-area:p;margin:0;font-size:.86rem;line-height:1.55;max-width:none;display:block}
+.topbar.lux .broker.hero .portrait{grid-area:photo;width:132px;margin:0 0 14px;align-self:start;justify-self:end}
+.topbar.lux .broker.hero .portrait .frame{aspect-ratio:4/5;border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.topbar.lux .broker.hero .portrait::before{inset:-5px;border:1px solid rgba(255,255,255,.35);border-radius:16px;transform:none}
+.topbar.lux .broker.hero .portrait .tag{left:50%;bottom:-14px;transform:translateX(-50%);font-size:.62rem;padding:5px 12px;white-space:nowrap}
+.topbar.lux .broker.hero .actions{grid-area:act;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:16px 0 0;border-top:1px solid rgba(255,255,255,.2)}
+.topbar.lux .broker.hero .actions .btn{grid-column:auto;display:flex;justify-content:center;align-items:center;gap:8px;width:100%;height:44px;box-sizing:border-box;margin:0;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.45);box-shadow:none;font-size:.64rem;letter-spacing:.14em;white-space:nowrap;transform:none}
+.topbar.lux .broker.hero .actions .btn:first-child{grid-column:1/-1}
+.topbar.lux .broker.hero .actions .btn::after{display:none}
+.topbar.lux .broker.hero .actions .btn svg{width:14px;height:14px;color:#fff;opacity:.9;filter:none}
+.topbar.lux .broker.hero .actions .btn:hover{background:rgba(255,255,255,.16);border-color:#fff;transform:none}
+@media (max-width:560px){.topbar.lux .broker.hero{grid-template-columns:minmax(0,1fr) 104px;grid-template-areas:"logo logo" "lopes photo" "h1 photo" "act act";grid-template-rows:auto auto 1fr auto;padding:20px;column-gap:16px}.topbar.lux .broker.hero p{display:none}.topbar.lux .broker.hero .portrait{width:104px}.topbar.lux .broker.hero h1{font-size:1.1rem}.topbar.lux .broker.hero .hero-logo svg{width:38px;height:38px}.topbar.lux .broker.hero .hero-logo b{font-size:1.3rem}.topbar.lux .broker.hero .actions .btn{font-size:.6rem;letter-spacing:.1em;padding:0 8px}}
+
+/* Carteirinha no padrão dos quadros do site: fundo claro, borda fina e toques de vermelho claro */
+.topbar.lux .broker.hero{background:var(--surface)!important;color:var(--fg);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 2px rgba(30,20,15,.05),0 18px 40px rgba(30,20,15,.10)}
+.topbar.lux .broker.hero::before,.topbar.lux .broker.hero::after{display:none}
+.topbar.lux .broker.hero .hero-logo{border-bottom:1px solid #F0D6D2}
+.topbar.lux .broker.hero .hero-logo svg{box-sizing:border-box;width:52px;height:52px;padding:8px;border-radius:12px;background:#A22F2E;color:#FFFFFF;--win:#F4C7C1;box-shadow:0 6px 14px rgba(162,47,46,.25)}
+.topbar.lux .broker.hero .hero-logo b{color:var(--fg)}
+.topbar.lux .broker.hero .hero-logo span{color:#A22F2E}
+.topbar.lux .broker.hero .lopes{background:#FBEDEB!important;border:1px solid #F0D6D2}
+.topbar.lux .broker.hero .lopes span{color:#7D2122}
+.topbar.lux .broker.hero h1{color:var(--fg)}
+.topbar.lux .broker.hero p{color:var(--muted)}
+.topbar.lux .broker.hero .portrait::before{border-color:#EBB8B1}
+.topbar.lux .broker.hero .portrait .tag{background:#A22F2E;color:#fff;box-shadow:0 6px 14px rgba(162,47,46,.25)}
+.topbar.lux .broker.hero .actions{border-top:1px solid #F0D6D2}
+.topbar.lux .broker.hero .actions .btn{color:#A22F2E;background:#fff;border:1px solid #E7B4AD;-webkit-backdrop-filter:none;backdrop-filter:none}
+.topbar.lux .broker.hero .actions .btn svg{color:#A22F2E}
+.topbar.lux .broker.hero .actions .btn:first-child{background:#F8E4E1;border-color:#E7B4AD}
+.topbar.lux .broker.hero .actions .btn:first-child svg{color:#1F7A4D}
+.topbar.lux .broker.hero .actions .btn:hover{background:#FBEDEB;border-color:#A22F2E}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
