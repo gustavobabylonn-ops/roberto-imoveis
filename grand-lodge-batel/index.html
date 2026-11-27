@@ -975,6 +975,12 @@ h3:not(.list-head h3):not(.left h3),h4,
 .price-row b,.promo-prices b,.m-title,.m-price b,
 .about-side blockquote,blockquote,
 .enc-ok b,.lf-ok b{color:var(--ink)}
+
+.u-price,.units .u-price,.specs dd,.f-head .sub b{color:var(--ink)!important}
+
+/* Quantidade de fotos no card */
+.m-photos{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:.3rem;padding:.26rem .6rem;border-radius:999px;font-family:"Montserrat",var(--body);font-size:.68rem;font-weight:600;letter-spacing:.02em;color:#fff;background:rgba(20,17,16,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);pointer-events:none}
+.m-photos svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2263,6 +2269,7 @@ function buildCard(L,i){
   if(L.badge)media.appendChild(make('span','m-badge',L.badge));
   var off=null;if(L.promoEnd){off=make('span','m-off',(L.promoPct||'')+'% OFF');media.appendChild(off)}
   var fav=make('button','m-fav');fav.type='button';fav.setAttribute('aria-label','Favoritar '+L.name);fav.setAttribute('aria-pressed',favorites[L.id]?'true':'false');fav.appendChild(icon(ICONS.heart));media.appendChild(fav);
+  var nPh=(L.photos||[]).length;if(nPh>1){var pc=make('span','m-photos');pc.setAttribute('aria-label',nPh+' fotos');pc.title=nPh+' fotos';pc.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-2.5h6L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.4"/></svg>';pc.appendChild(document.createTextNode(nPh+' fotos'));media.appendChild(pc)}
   var body=make('div','m-body');
   body.appendChild(make('b','m-title',L.name));
   var loc=make('span','m-loc');loc.appendChild(icon(ICONS.pin));loc.appendChild(document.createTextNode(L.place));body.appendChild(loc);
