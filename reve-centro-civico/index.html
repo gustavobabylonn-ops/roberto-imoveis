@@ -964,6 +964,17 @@ h2{font-weight:600}
 /* Instagram clicável no rodapé */
 .insta-link{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:currentColor}
 .insta-link:hover{opacity:.8}
+
+/* Textos grandes: preto com leve toque de vermelho escuro */
+:root{--ink:#3B1716}
+h1.lux-title,.lux-copy .lux-title,:root[data-theme="light"] .lux-title,
+.topbar.lux .mark b,:root[data-theme="light"] .topbar.lux .mark b,
+.mc-txt b,
+h2:not(.list-head h2):not(.left h2):not(.lb h2),
+h3:not(.list-head h3):not(.left h3),h4,
+.price-row b,.promo-prices b,.m-title,.m-price b,
+.about-side blockquote,blockquote,
+.enc-ok b,.lf-ok b{color:var(--ink)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
