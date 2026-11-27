@@ -858,6 +858,56 @@ h2{font-weight:600}
 .topbar.lux .broker.hero .actions .btn:first-child{background:#F8E4E1;border-color:#E7B4AD}
 .topbar.lux .broker.hero .actions .btn:first-child svg{color:#1F7A4D}
 .topbar.lux .broker.hero .actions .btn:hover{background:#FBEDEB;border-color:#A22F2E}
+
+/* Carteirinha v3: vidro transparente com leve branco, na altura exata do título */
+.lux-title{line-height:1.04;max-width:none}
+.topbar.lux .broker.hero{display:grid;grid-template-columns:38% minmax(0,1fr);grid-template-areas:"photo logo" "photo act";grid-template-rows:auto 1fr;column-gap:16px;row-gap:12px;align-items:stretch;padding:14px;max-width:460px;
+  background:rgba(255,255,255,.14)!important;-webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1);border:1px solid rgba(255,255,255,.55);border-radius:16px;box-shadow:0 18px 40px rgba(30,20,15,.12),inset 0 1px 0 rgba(255,255,255,.5)}
+.topbar.lux .broker.hero h1,.topbar.lux .broker.hero p{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;margin:0;padding:0}
+.topbar.lux .broker.hero .hero-logo{grid-area:logo;align-self:start;margin:0;padding:2px 0 12px;gap:12px;border-bottom:1px solid rgba(162,47,46,.22)}
+.topbar.lux .broker.hero .hero-logo svg{width:44px;height:44px;padding:7px;border-radius:11px}
+.topbar.lux .broker.hero .hero-logo b{font-size:1.35rem;letter-spacing:.14em}
+.topbar.lux .broker.hero .hero-logo span{font-size:.5rem;letter-spacing:.26em}
+.topbar.lux .broker.hero .portrait{grid-area:photo;position:relative;width:auto;height:100%;margin:0;align-self:stretch;justify-self:stretch;min-height:0}
+.topbar.lux .broker.hero .portrait::before{display:none}
+.topbar.lux .broker.hero .portrait .frame{position:absolute;inset:0;aspect-ratio:auto;height:100%;border-radius:11px;box-shadow:0 8px 20px rgba(30,20,15,.18)}
+.topbar.lux .broker.hero .portrait img{object-position:50% 18%}
+.topbar.lux .broker.hero .portrait .tag{bottom:10px;font-size:.58rem;padding:4px 10px}
+.topbar.lux .broker.hero .lopes{grid-area:photo;align-self:start;justify-self:start;z-index:2;margin:8px;padding:4px 8px;gap:6px;border-radius:8px;background:rgba(251,237,235,.92)!important}
+.topbar.lux .broker.hero .lopes span{font-size:.46rem;letter-spacing:.08em}
+.topbar.lux .broker.hero .lopes img{height:22px}
+.topbar.lux .broker.hero .actions{grid-area:act;align-self:end;display:grid;grid-template-columns:1fr;gap:7px;margin:0;padding:0;border:0}
+.topbar.lux .broker.hero .actions .btn,.topbar.lux .broker.hero .actions .btn:first-child{grid-column:auto;height:34px;font-size:.6rem;letter-spacing:.12em;justify-content:flex-start;padding:0 14px;background:rgba(255,255,255,.55);border:1px solid rgba(162,47,46,.35);color:#A22F2E}
+.topbar.lux .broker.hero .actions .btn:first-child{background:rgba(248,228,225,.85)}
+.topbar.lux .broker.hero .actions .btn:hover{background:#fff;border-color:#A22F2E}
+@media (min-width:981px){
+.lux-hero{grid-template-rows:auto auto auto auto;row-gap:0;align-content:center;align-items:start}
+.lux-copy{display:contents}
+.lux-eyebrow{grid-column:1;grid-row:1}
+.lux-copy .lux-title{grid-column:1;grid-row:2;margin:1.1rem 0 0}
+.lux-copy .lux-sub{grid-column:1;grid-row:3;margin:1.3rem 0 1.9rem}
+.lux-actions{grid-column:1;grid-row:4}
+.topbar.lux .broker.hero{grid-column:2;grid-row:2;align-self:stretch;margin-top:calc(1.1rem + .08em);height:auto;min-height:0}
+}
+@media (max-width:980px){.topbar.lux .broker.hero{min-height:230px;max-width:none}}
+
+@media (min-width:981px) and (max-width:1180px){
+.lux-copy .lux-title{font-size:3rem}
+.topbar.lux .broker.hero{padding:12px;row-gap:8px;column-gap:12px}
+.topbar.lux .broker.hero .hero-logo{padding-bottom:8px;gap:10px}
+.topbar.lux .broker.hero .hero-logo svg{width:38px;height:38px;padding:6px}
+.topbar.lux .broker.hero .hero-logo b{font-size:1.15rem}
+.topbar.lux .broker.hero .actions{gap:6px}
+.topbar.lux .broker.hero .actions .btn,.topbar.lux .broker.hero .actions .btn:first-child{height:30px;font-size:.56rem;padding:0 10px}
+}
+
+.topbar.lux .broker.hero{background:rgba(255,255,255,.24)!important;-webkit-backdrop-filter:blur(16px) saturate(1.05) brightness(1.08);backdrop-filter:blur(16px) saturate(1.05) brightness(1.08);grid-template-areas:"photo logo" "photo h1" "photo act";grid-template-rows:auto 1fr auto}
+.topbar.lux .broker.hero h1{position:static;width:auto;height:auto;overflow:visible;clip:auto;clip-path:none;white-space:normal;grid-area:h1;align-self:center;font-size:.92rem;line-height:1.3;color:var(--fg);margin:0}
+@media (min-width:981px) and (max-width:1380px){.topbar.lux .broker.hero h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}}
+
+@media (min-width:1381px) and (max-width:1500px){.topbar.lux .broker.hero{row-gap:8px}.topbar.lux .broker.hero .hero-logo{padding-bottom:9px}.topbar.lux .broker.hero .actions{gap:6px}}
+
+@media (max-width:560px){.topbar.lux .broker.hero .lopes{margin:6px;padding:3px 6px;gap:4px}.topbar.lux .broker.hero .lopes span{white-space:nowrap;font-size:.4rem;letter-spacing:.04em}.topbar.lux .broker.hero .lopes img{height:18px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -891,7 +941,7 @@ h2{font-weight:600}
   <div class="wrap lux-hero">
    <div class="lux-copy">
     <p class="lux-eyebrow"><span></span>Roberto · Corretor de imóveis<span></span></p>
-    <p class="lux-title">Seu próximo endereço, com cuidado em cada detalhe</p>
+    <p class="lux-title">Seu próximo<br> endereço, com<br> cuidado em<br> cada detalhe</p>
     <p class="lux-sub">Do primeiro apartamento ao alto padrão, em Curitiba e região. Eu acompanho você da primeira visita à entrega das chaves.</p>
     <div class="lux-actions">
       <a class="lux-btn" href="#imoveis">Ver imóveis <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
