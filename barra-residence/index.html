@@ -724,6 +724,46 @@ h2{font-weight:600}
 .share-menu a:hover,.share-menu button:hover{background:var(--bg)}
 .share-menu svg{width:18px;height:18px;flex:none}
 .share-ok{position:absolute;right:0;bottom:calc(100% + 8px);background:var(--pill);color:var(--pill-fg);font:600 .75rem "Montserrat",var(--body);padding:.4rem .7rem;border-radius:999px;white-space:nowrap;z-index:61}
+
+/* Topo no estilo hotel de luxo: foto em tela cheia com degradê, sem a faixa vermelha */
+.topbar.lux{position:relative;isolation:isolate;overflow:hidden;background:#0d0b0b;color:#fff;min-height:clamp(560px,82vh,780px);display:flex;flex-direction:column}
+.topbar.lux::before{display:none}
+.topbar.lux::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(90deg,rgba(13,11,11,.92) 0%,rgba(13,11,11,.72) 30%,rgba(13,11,11,.28) 58%,rgba(13,11,11,.05) 80%),
+  linear-gradient(180deg,rgba(13,11,11,.65) 0%,rgba(13,11,11,0) 24%,rgba(13,11,11,0) 72%,var(--bg) 100%)}
+.lux-bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 88%;transform:scale(1.04);animation:luxZoom 18s ease-out forwards}
+@keyframes luxZoom{to{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.lux-bg{animation:none;transform:none}}
+.topbar.lux header{position:relative;z-index:2}
+.topbar.lux .mark span,.topbar.lux nav a{color:rgba(255,255,255,.78)}
+.topbar.lux nav{gap:clamp(1rem,2vw,2.2rem);margin-inline:auto;padding-inline:1.5rem}
+.topbar.lux nav a{font-family:"Montserrat",var(--body);font-size:.66rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;transition:color .2s;white-space:nowrap}
+.topbar.lux nav a:hover{color:#fff}
+.topbar.lux .cta-call b{font-size:.95rem;font-weight:400}
+.topbar.lux .cta-call small{color:rgba(255,255,255,.7)}
+.topbar.lux .sell-pill,.topbar.lux .cta-pill,.topbar.lux .theme-tg{background:rgba(255,255,255,.08)!important;color:#fff!important;border:1px solid rgba(255,255,255,.38)!important;box-shadow:none!important;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.topbar.lux .sell-pill:hover,.topbar.lux .cta-pill:hover,.topbar.lux .theme-tg:hover{background:rgba(255,255,255,.18)!important;border-color:rgba(255,255,255,.75)!important}
+@media (max-width:720px){.topbar.lux .cta-wrap{border-top-color:rgba(255,255,255,.16)}}
+.lux-hero{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;padding-block:2rem 6.5rem;width:100%;box-sizing:border-box}
+.lux-eyebrow{display:flex;align-items:center;gap:1rem;font-family:"Montserrat",var(--body);font-size:.64rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.8);margin:0 0 1.6rem}
+.lux-eyebrow span{display:block;width:clamp(36px,6vw,78px);height:1px;background:rgba(255,255,255,.55)}
+.lux-title{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,5.6vw,4.9rem);line-height:1.04;letter-spacing:-.01em;margin:0;max-width:11.5em;color:#fff;text-wrap:balance}
+.lux-sub{font-family:var(--body);font-size:clamp(.98rem,1.3vw,1.12rem);line-height:1.55;color:rgba(255,255,255,.86);max-width:30em;margin:1.4rem 0 2.2rem}
+.lux-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.6rem}
+.lux-btn{display:inline-flex;align-items:center;gap:.9rem;padding:1rem 1.7rem;border-radius:999px;border:1px solid rgba(255,255,255,.6);color:#fff;text-decoration:none;font-family:"Montserrat",var(--body);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;background:rgba(255,255,255,.04);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .25s,border-color .25s,gap .25s}
+.lux-btn:hover{background:rgba(255,255,255,.14);border-color:#fff;gap:1.2rem}
+.lux-btn svg{width:15px;height:15px}
+.lux-link{display:inline-flex;align-items:center;gap:.55rem;color:rgba(255,255,255,.85);text-decoration:none;font-family:"Montserrat",var(--body);font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding-bottom:.3rem;border-bottom:1px solid rgba(255,255,255,.35);transition:color .2s,border-color .2s}
+.lux-link:hover{color:#fff;border-color:#fff}
+.lux-foot{position:absolute;left:0;right:0;bottom:2.4rem;display:flex;justify-content:space-between;align-items:center}
+.lux-scroll{display:inline-flex;align-items:center;gap:.7rem;color:rgba(255,255,255,.75);text-decoration:none;font-family:"Montserrat",var(--body);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase}
+.lux-scroll i{position:relative;width:20px;height:32px;border:1px solid rgba(255,255,255,.6);border-radius:12px}
+.lux-scroll i::after{content:"";position:absolute;left:50%;top:6px;width:2px;height:6px;margin-left:-1px;border-radius:2px;background:#fff;animation:luxWheel 1.8s ease-in-out infinite}
+@keyframes luxWheel{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(10px)}}
+.lux-loc{display:flex;align-items:center;gap:1rem;font-family:"Montserrat",var(--body);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.lux-loc::after{content:"";width:clamp(40px,8vw,120px);height:1px;background:rgba(255,255,255,.5)}
+@media (max-width:1100px){.topbar.lux nav{gap:1rem;padding-inline:1rem}.topbar.lux nav a{letter-spacing:.14em}}
+@media (max-width:720px){.topbar.lux{min-height:640px}.topbar.lux::after{background:linear-gradient(180deg,rgba(13,11,11,.7) 0%,rgba(13,11,11,.35) 30%,rgba(13,11,11,.55) 60%,rgba(13,11,11,.85) 88%,var(--bg) 100%)}.lux-bg{object-position:62% 50%}.lux-hero{justify-content:flex-end;padding-block:1.5rem 6rem}.lux-eyebrow{font-size:.56rem;gap:.7rem;margin-bottom:1.1rem}.lux-sub{margin:1rem 0 1.6rem}.lux-foot{bottom:1.6rem}.lux-loc{font-size:.52rem}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -738,7 +778,8 @@ h2{font-weight:600}
   <symbol id="house" viewBox="0 0 32 32"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" d="M4 15 16 5l12 10M8 12v15h16V12M13 27v-8h6v8"/></symbol>
 </svg>
 
-<div class="band topbar">
+<div class="band topbar lux">
+  <img class="lux-bg" src="img/lodge-rooftop-piscina.jpg" alt="" aria-hidden="true" fetchpriority="high">
   <header>
     <div class="wrap">
       <div class="mark"><svg role="img" aria-label="Logo Roberto Imóveis"><use href="#ri"/></svg><div><b>ROBERTO</b><span>Corretor de imóveis</span></div></div>
@@ -754,6 +795,19 @@ h2{font-weight:600}
       </div>
     </div>
   </header>
+  <div class="wrap lux-hero">
+    <p class="lux-eyebrow"><span></span>Roberto · Corretor de imóveis<span></span></p>
+    <p class="lux-title">Seu próximo endereço, com cuidado em cada detalhe</p>
+    <p class="lux-sub">Do primeiro apartamento ao alto padrão, em Curitiba e região. Eu acompanho você da primeira visita à entrega das chaves.</p>
+    <div class="lux-actions">
+      <a class="lux-btn" href="#imoveis">Ver imóveis <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="lux-link" href="https://wa.me/5541984163630?text=Ol%C3%A1%2C%20Roberto%21%20Vi%20seu%20site%20e%20gostaria%20de%20agendar%20uma%20visita." target="_blank" rel="noopener noreferrer" data-ev="visita">Agendar visita</a>
+    </div>
+  </div>
+  <div class="lux-foot wrap">
+    <a class="lux-scroll" href="#imoveis" aria-label="Rolar até os imóveis"><i aria-hidden="true"></i>Rolar</a>
+    <span class="lux-loc">Grand Lodge Batel · Curitiba</span>
+  </div>
 </div>
 
 <section class="block" id="imoveis" style="padding-block:1.6rem 3.5rem">
